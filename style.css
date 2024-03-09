@@ -1,0 +1,536 @@
+:root {
+    --primary: #0074D9;
+    --secondary: #2ECC40;
+    --background-color:#dbefde;
+    --primary_text:#02223c;
+    --button:#2beb42;
+    --tertiary:#00B98E;
+  }
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+header{
+    height: 100vh;
+    width: 100vw;
+}
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+ul{
+    list-style: none;/
+}
+ul li a{
+    text-decoration: none;
+}
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+  
+#video-background {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+  
+.nav_content{
+    transform: translate(0,0);
+    color: rgba(255, 255, 255, 0.853);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.display_flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex_wrap{
+    flex-wrap: wrap;
+    padding-left: 0%;
+}
+.upper_nav{
+    width: 100vw;
+    height: 14vh;
+    background-color: rgba(255, 255, 255,0); 
+}
+.pages{
+    margin-right: 2%;
+}
+.pages ul li{
+    padding: 0% 1%;
+    font-weight: bold;
+    margin-top: -.5%;
+}
+.nav_content .logo img{
+    width: 50%;
+}
+.nav_content .logo{
+    margin-left: 2%;
+}
+.nav_content .pages li a,.pages li span,.pages li{
+    font-family: 'Robot Slab';
+    font-size: 100%;
+    font-weight:bold;
+    background: linear-gradient(to right,var(--primary),var(--secondary));
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 3%; 
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.25);
+}
+.nav_content .pages li a:hover,.pages li span:hover,.pages li:hover{
+    background: linear-gradient(to right,var(--secondary),var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+
+/* ---------------------------------------------------------------------front----------------------------------------------------------------------- */
+.front h2{
+    color: rgb(255, 255, 255);
+    font-family: "Bodoni Moda";
+    font-weight: bold;
+    line-height: 1.2em;
+    text-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    text-align: center;
+    margin-bottom: 2%;
+    margin-top: 1%;
+}
+
+.front h2 div{
+    font-size:1.2em ;
+}
+.search{
+    background-color: rgba(255, 255, 255,0);
+    border-radius: 12px;
+    text-align: center;
+    padding: 1% 0 2% 0;
+}
+.search ul li{
+    padding: 1% 0% 2% 0%;
+}
+.search li a{
+    font-family: sans-serif;
+    font-weight:bold;
+    color: #f0f4f6;
+    letter-spacing: 3%;
+    font-size: 113%;
+}
+.search .searchbar{
+    justify-content: center;
+    padding: 1% 0%;
+    margin:0% 20%;
+    background-color: white;
+    border-radius: 45px;
+}
+.search input{
+    padding: 3% 20% 3% 2%;
+    font-size: 100%;
+    color: #333;
+    width: 45vw;
+    height: 4vh;
+    border: none;
+}
+.searchbar button{
+    color: white;
+    background-color:var(--button);
+    border: none;
+    cursor: pointer;
+    font-size: 125%;
+    width: 7vw;
+    padding: 1.5% 1%;
+    border-radius:45px;
+}
+.search ul li a {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    padding: .4em .5em;
+    border-bottom: solid rgba(255, 255, 255, 0);
+    border-radius:45px;
+  }
+  .search ul li a:hover::before {
+    width: 100%;
+  }
+  .search ul li a:hover{
+    border-bottom: solid var(--secondary);
+    color: var(--primary_text);
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius:45px;
+  }
+  .search input:focus{
+    border: none;
+    outline: none;
+  }
+
+/* --------------------------------------------------------------Property Types--------------------------------------------------------------------------- */
+main{
+    background-color: var(--background-color);
+}.section{
+    width: 100vw;
+}
+ .container{
+    display: flex;
+    flex-direction: column;
+    background-color:white;
+    text-align: center;
+    justify-content: center;
+    max-width: 90%;
+}
+.container h1{
+    color: var(--primary_text);
+    font-size: 3.5em;
+    margin: 3% 0;
+}
+.mx-auto{
+    margin: 0 auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.pd{
+    padding: 2%;
+}
+.border{
+    background-color: var(--background-color);
+}
+.dotted{
+    border: 1px dotted var(--button);
+    background-color: white;
+    padding: 7%;
+}
+.icon-fluid{
+    padding: 6%;
+    border: 2px dotted var(--button);
+    border-radius: 50%;
+    width: 35%;
+}
+.image-container{
+    height: 170px;
+    width: 100%;
+    overflow: hidden;
+}
+.image-fluid{
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+.image-container .image-fluid:hover {
+    transform: scale(1.1);
+}
+.mb-3{
+    margin-bottom: 3%;
+}
+h6{
+    color: var(--primary_text);
+    font-size: 150%;
+}
+span{
+    color: var(--tertiary);
+}
+iframe{
+    border: 12px solid white;
+}
+.about-property{
+    margin-top: 2%;
+    background-color: var(--background-color);
+    padding: 2%;
+}
+.about-property div{
+    background-color: white;
+    padding: 1% 2% 1% 1%;
+}
+
+
+/* -----------------------------------------------------------media query------------------------------------------------------- */
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .upper_nav{
+        height: 10vh;
+    }
+      .pages{
+        width: 100%;
+    }
+    .nav_content .pages li a, .pages li span, .pages li {
+        font-size: 87%;
+    }
+    .front h2{
+        margin: 30% 0% 5% 0%;
+        font-size: 205%;
+        line-height: 121%;
+    }
+    .search{
+        margin: 2% 6%;
+    }
+      .search .searchbar{
+        flex-direction: column;
+        margin: 0;
+        padding: 1% 6%;
+        border-radius: 12px;
+      }
+      .searchbar input{
+        width: 100%;
+        padding: 0% 2%;
+        font-size: 92%;
+        border-radius: 5px;
+        margin: 1% 0% 4% 0%;
+        box-shadow: 2px 2px 5px 2px rgba(39, 231, 13, 0.942);
+      }
+      .searchbar button{
+        width: 75%;
+        font-size: 100%;
+        margin-bottom: 1%
+      }
+      .front .search .types{
+        margin: 0% 5%;
+      }
+      .search li a{
+        font-size:44%;
+    }
+    .col-s-1 {width: 8.33%;}
+    .col-s-2 {width: 16.66%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33%;}
+    .col-s-5 {width: 41.66%;}
+    .col-s-6 {width: 50%;}
+    .col-s-7 {width: 58.33%;}
+    .col-s-8 {width: 66.66%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33%;}
+    .col-s-11 {width: 91.66%;}
+    .col-s-12 {width: 100%;}
+    
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 601px) {
+    .pages{
+        width: 72%;
+    }
+    .nav_content .pages li a, .pages li span, .pages li {
+        font-size: 110%;
+    }
+    .front h2{
+        padding-top: 15%;
+        font-size: 270%;
+        line-height: 144%;
+        margin-bottom: 0%;
+    }
+    .pages h2 div{
+        font-size: 130%;
+    }
+    .search{
+        margin: 0% 20%;
+    }
+    .search .searchbar{
+        margin: 0% -17%;
+        padding: 2.5% 2%;
+    }
+    .front .search input{
+        width: 58vw;
+    } 
+    .search input,.searchbar button {
+        font-size: 100%;
+        width: 58vw;
+    }
+    .searchbar button{
+        width: 18vw;
+    }
+    .front .search .types{
+        margin: 3% -16%;
+    }
+    .search li a{
+        font-size: 75%;
+    } 
+    .col-s-1 {width: 8.33%;}
+    .col-s-2 {width: 16.66%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33%;}
+    .col-s-5 {width: 41.66%;}
+    .col-s-6 {width: 50%;}
+    .col-s-7 {width: 58.33%;}
+    .col-s-8 {width: 66.66%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33%;}
+    .col-s-11 {width: 91.66%;}
+    .col-s-12 {width: 100%;}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .pages{
+        width: 65%;
+    }
+    .nav_content .pages li a, .pages li span, .pages li {
+        font-size: 122%;
+    }
+    .front h2{
+        padding-top: 15%;
+        font-size: 310%;
+        line-height: 144%;
+        margin-bottom: 0%;
+    }
+    .pages h2 div{
+        font-size: 130%;
+    }
+    .search{
+        margin: 0% 20%;
+    }
+    .search .searchbar{
+        margin: 0% 0%;
+        padding: 2.5% 2%;
+    }
+    .front .search input{
+        width: 58vw;
+    } 
+    .search input,.searchbar button {
+        font-size: 100%;
+        width: 58vw;
+    }
+    .searchbar button{
+        width: 18vw;
+    }
+    .front .search .types{
+        margin: 2% 0%;
+    }
+    .search li a{
+        font-size: 74%;
+    } 
+    .col-s-1 {width: 8.33%;}
+    .col-s-2 {width: 16.66%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33%;}
+    .col-s-5 {width: 41.66%;}
+    .col-s-6 {width: 50%;}
+    .col-s-7 {width: 58.33%;}
+    .col-s-8 {width: 66.66%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33%;}
+    .col-s-11 {width: 91.66%;}
+    .col-s-12 {width: 100%;}
+    
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .pages{
+        width: 58%;
+    }
+    .front h2{
+        padding-top: 10%;
+        font-size: 4em;
+        margin-bottom: 0%;
+    }
+    .search li a{
+        font-size: 94%;
+    }
+    .front .search input{
+        width: 58vw;
+    }
+    .search input,.searchbar button {
+        font-size: 78%;
+    }
+    .nav_content .pages li a, .pages li span, .pages li {
+        font-size: 132%;
+    }
+    .search{
+        margin: 0% 20%;
+    }
+    .search .searchbar{
+        margin: 0% 18%;
+        padding: 1.5% 2%;
+    }
+    .front .search .types{
+        margin: 0% 0%;
+    }
+    .col-l-1 {width: 8.33%;}
+    .col-l-2 {width: 16.66%;}
+    .col-l-3 {width: 25%;}
+    .col-l-4 {width: 33.33%;}
+    .col-l-5 {width: 41.66%;}
+    .col-l-6 {width: 50%;}
+    .col-l-7 {width: 58.33%;}
+    .col-l-8 {width: 66.66%;}
+    .col-l-9 {width: 75%;}
+    .col-l-10 {width: 83.33%;}
+    .col-l-11 {width: 91.66%;}
+    .col-l-12 {width: 100%;}
+    
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .pages{
+        width: 48%;
+    }
+    .front h2{
+        padding-top: 5%;
+        font-size: 5em;
+        margin-bottom: 0%;
+    }
+    .search li a{
+        font-size: 114%;
+    }
+    .front .search input{
+        width: 58vw;
+    }
+    .search input,.searchbar button {
+        font-size: 100%;
+    }
+    .nav_content .pages li a, .pages li span, .pages li {
+        font-size: 132%;
+    }
+    .search{
+        margin: 0% 20%;
+    }
+    .search .searchbar{
+        margin: 0% 18%;
+        padding: 1.5% 2%;
+    }
+    .front .search .types{
+        margin: 0% 0%;
+    }
+    .col-l-1 {width: 8.33%;}
+    .col-l-2 {width: 16.66%;}
+    .col-l-3 {width: 25%;}
+    .col-l-4 {width: 33.33%;}
+    .col-l-5 {width: 41.66%;}
+    .col-l-6 {width: 50%;}
+    .col-l-7 {width: 58.33%;}
+    .col-l-8 {width: 66.66%;}
+    .col-l-9 {width: 75%;}
+    .col-l-10 {width: 83.33%;}
+    .col-l-11 {width: 91.66%;}
+    .col-l-12 {width: 100%;}
+    
+}
+.col-3 {width: 20%;}
+.col-1 {width: 60%;}
