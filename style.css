@@ -79,7 +79,7 @@ ul li a{
     /* z-index: 1000; */
     padding: 20px;
     height: 14vh;
-    background-color: rgba(255, 255, 255,0); 
+    background-color: rgba(255, 255, 255,.5); 
 }
 .pages{
     margin-right: 2%;
@@ -128,6 +128,7 @@ ul li a{
     text-align: center;
     margin-bottom: 2%;
     margin-top: 1%;
+    text-shadow: 10px 10px 4px rgba(0, 0, 0, 0.921);
 }
 
 .front h2 div{
@@ -199,6 +200,7 @@ ul li a{
 /* --------------------------------------------------------------Property Types--------------------------------------------------------------------------- */
 main{
     background-color: var(--background-color);
+    margin-top: -1%;
 }.section{
     width: 100vw;
 }
@@ -213,7 +215,7 @@ main{
 .container h1{
     color: var(--primary_text);
     font-size: 3.5em;
-    margin: 3% 0;
+    margin: 1% 0;
 }
 .mx-auto{
     margin: 0 auto;
@@ -223,9 +225,13 @@ main{
 .row{
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: 5%;
 }
 .pd{
     padding: 2%;
+}
+.mt{
+    margin-top: -6%;
 }
 .border{
     background-color: var(--background-color);
@@ -234,6 +240,8 @@ main{
     border: 1px dotted var(--button);
     background-color: white;
     padding: 7%;
+    box-shadow: 2px 2px 10px 2px var(--primary_text);
+    border-radius: 20px;
 }
 .icon-fluid{
     padding: 6%;
@@ -242,17 +250,21 @@ main{
     width: 35%;
 }
 .image-container{
-    height: 170px;
+    height: 250px;
     width: 100%;
     overflow: hidden;
+    /* z-index: 0; */
+    position: relative;
+    border-radius: 12px;
 }
 .image-fluid{
     width: 100%;
     height: 100%;
     transition: transform 0.3s ease;
+    display: block;
 }
 .image-container .image-fluid:hover {
-    transform: scale(1.1);
+    transform: scale(1.3);
 }
 .mb-3{
     margin-bottom: 3%;
@@ -266,6 +278,7 @@ span{
 }
 iframe{
     border: 12px solid white;
+    box-shadow: 2px 2px 10px 2px var(--tertiary);
 }
 .about-property{
     margin-top: 2%;
@@ -275,6 +288,161 @@ iframe{
 .about-property div{
     background-color: white;
     padding: 1% 2% 1% 1%;
+}
+.add{
+    font-size: 110%;
+}
+.recommended-properties{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-top: -5%;
+}
+.slide_row{
+    width: 100%;
+    display: none;
+    text-align: center;
+}
+.slide_row:first-child {
+    display: inline-block;
+}
+.recommended-properties button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.recommended-properties button i{
+    font-size: 22px;
+}
+
+.recommended-properties .prev {
+    left: 20px;
+}
+
+.recommended-properties .next {
+    right: 20px;
+}
+.recommended-properties .dots {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.recommended-properties .dot {
+    height: 10px;
+    width: 10px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.recommended-properties .active {
+    background-color: #717171;
+}
+.recommended-properties .row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 0;
+}
+.recommended-properties .col{
+    /* position: relative; */
+    /* overflow: hidden; */
+    width: 32%;
+    padding: 0 1%;
+    box-shadow: 2px 2px 10px 2px black;
+}
+.recommended-properties .row .desc-box{
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8); 
+    padding: 20px;
+}
+.recommended-properties .row .col .Property-name ,.price{
+    font-size: 22px;
+    font-weight:700 ;
+    text-align: left;
+    font-family: 'Open Sans';
+}
+.recommended-properties .row .col .desc{
+    font-family: "Roboto", Arial, sans-serif;
+    background: #fff;
+    font-size: 15px;
+    text-align: left;
+    line-height: 1;
+    padding: 2% 0 4% 0;
+    font-weight: 400;
+    color: gray;
+}
+.price i{
+    font-size: 20px;
+}
+
+
+/* ---------------------------------------------------------------  Upper Footer------------------------------------------------------------------------------- */
+footer .upper_footer{
+    background-color: var(--background-color);
+    padding-top: 5%;
+}
+.upper_footer .get-in-touch{
+    margin: -11% 0 0 15%;
+}
+
+.get-in-touch h4,.mail h4 {
+    padding-bottom: 2%;
+    font-size: 210%;
+}
+.get-in-touch p {
+    font-size: 120%;
+    padding: 0 0 1% 0 ;
+}
+.upper_footer .medium{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.upper_footer .medium i{
+    font-size: 150%;
+    padding-right: 2%;
+}
+.upper_footer .medium p{
+    font-size: 150%;
+    font-weight: bold;
+    font-family: 'math';
+}
+.upper_footer .medium p a {
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: 300;
+}
+.upper_footer .mail label{
+
+    font-size: 120%;
+    font-weight: bold;
+    padding: 5% 0;
+}
+.upper_footer .mail input[type="text"],.upper_footer .mail input[type="email"] {
+    width: 80%;
+    height: 5vh;
+}
+.upper_footer .mail textarea{
+    width: 80%;
+    height: 15vh;
+}
+.upper_footer .mail input[type="submit"]{
+    padding: 1%;
+    color: white;
+    background-color: var(--tertiary);
+    font-size: 100%;
+    margin-top: 2%;
+    margin-bottom: 20%;
 }
 
 
@@ -544,3 +712,5 @@ iframe{
 }
 .col-3 {width: 20%;}
 .col-1 {width: 60%;}
+
+
