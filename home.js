@@ -17,6 +17,33 @@ let slideIndex = 1;
             }
             slides[slideIndex - 1].style.display = "block";
         }
+
+
+        // --------------------------------------------------------------Reviews-----------------------------------------------------
+        const sliderContainer = document.querySelector('.slider-container');
+         const sliderItems = document.querySelectorAll('.review-card');
+  let currentIndex = 0;
+
+  function nextSlide() {
+    currentIndex++;
+    if (currentIndex > sliderItems.length - 1) {
+      currentIndex = 0;
+    }
+    updateSlider();
+  }
+
+  function prevSlide() {
+    currentIndex--;
+    if (currentIndex < 0) {
+      currentIndex = sliderItems.length - 1;
+    }
+    updateSlider();
+  }
+
+  function updateSlider() {
+    const offset = -currentIndex * sliderItems[0].offsetWidth;
+    sliderContainer.style.transform = `translateX(${offset}px)`;
+  }
         // ----------------------------------------------- For calling-----------------------------------------------------------------------
 function confirmCall(phoneNumber) {
     var confirmed = confirm("Do you want to call " + phoneNumber + "?");

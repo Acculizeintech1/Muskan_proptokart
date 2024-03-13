@@ -35,6 +35,9 @@ ul{
 ul li a{
     text-decoration: none;
 }
+.text-center{
+    text-align: center;
+}
 .video-container {
     position: absolute;
     top: 0;
@@ -73,13 +76,10 @@ ul li a{
     padding-left: 0%;
 }
 .upper_nav{
-    /* position: fixed; */
     width: 100%;
-    /* top: 0; */
-    /* z-index: 1000; */
     padding: 20px;
-    height: 14vh;
-    background-color: rgba(255, 255, 255,.5); 
+    height: 10vh;
+    background-color:rgba(0, 0, 0, 0.499); 
 }
 .pages{
     margin-right: 2%;
@@ -91,7 +91,7 @@ ul li a{
     margin-top: -.5%;
 }
 .nav_content .logo img{
-    width: 70%;
+    width: 10%;
 }
 .nav_content .logo{
     margin-left: 2%;
@@ -100,11 +100,12 @@ ul li a{
     font-family: 'Robot Slab';
     font-size: 100%;
     font-weight:bold;
-    background: linear-gradient(to right,var(--primary),var(--secondary));
-    -webkit-background-clip: text; 
-    -webkit-text-fill-color: transparent; 
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color:white;
+    /* background: linear-gradient(to right,var(--primary),var(--secondary)); */
+    /* -webkit-background-clip: text;  */
+    /* -webkit-text-fill-color: transparent;  */
+    /* background-clip: text; */
+    /* -webkit-text-fill-color: transparent; */
     letter-spacing: 3%; 
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.25);
 }
@@ -125,7 +126,6 @@ ul li a{
     font-weight: bold;
     line-height: 1.2em;
     text-shadow: 0px 0px 10px rgba(0,0,0,0.3);
-    text-align: center;
     margin-bottom: 2%;
     margin-top: 1%;
     text-shadow: 10px 10px 4px rgba(0, 0, 0, 0.921);
@@ -137,7 +137,6 @@ ul li a{
 .search{
     background-color: rgba(255, 255, 255,0);
     border-radius: 12px;
-    text-align: center;
     padding: 1% 0 2% 0;
 }
 .search ul li{
@@ -208,13 +207,12 @@ main{
     display: flex;
     flex-direction: column;
     background-color:white;
-    text-align: center;
     justify-content: center;
     max-width: 90%;
 }
 .container h1{
     color: var(--primary_text);
-    font-size: 3.5em;
+    font-size: 3.2em;
     margin: 1% 0;
 }
 .mx-auto{
@@ -253,9 +251,9 @@ main{
     height: 250px;
     width: 100%;
     overflow: hidden;
-    /* z-index: 0; */
     position: relative;
     border-radius: 12px;
+    padding-top: 3%;
 }
 .image-fluid{
     width: 100%;
@@ -264,7 +262,7 @@ main{
     display: block;
 }
 .image-container .image-fluid:hover {
-    transform: scale(1.3);
+    transform: scale(1.2);
 }
 .mb-3{
     margin-bottom: 3%;
@@ -277,8 +275,8 @@ span{
     color: var(--tertiary);
 }
 iframe{
-    border: 12px solid white;
-    box-shadow: 2px 2px 10px 2px var(--tertiary);
+    border: 5px solid white;
+    box-shadow: 2px 2px 5px 2px var(--tertiary);
 }
 .about-property{
     margin-top: 2%;
@@ -292,6 +290,7 @@ iframe{
 .add{
     font-size: 110%;
 }
+/* -----------------------------------------------------------------------Recommended pROPERTIES------------------------------------------ */
 .recommended-properties{
     width: 100%;
     overflow: hidden;
@@ -301,7 +300,6 @@ iframe{
 .slide_row{
     width: 100%;
     display: none;
-    text-align: center;
 }
 .slide_row:first-child {
     display: inline-block;
@@ -326,7 +324,6 @@ iframe{
     right: 20px;
 }
 .recommended-properties .dots {
-    text-align: center;
     margin-top: 10px;
 }
 
@@ -336,7 +333,7 @@ iframe{
     background-color: #bbb;
     border-radius: 50%;
     display: inline-block;
-    margin: 0 5px;
+    margin: 30px 5px 0px 5px;
     cursor: pointer;
 }
 
@@ -350,12 +347,9 @@ iframe{
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    text-align: center;
     padding-bottom: 0;
 }
 .recommended-properties .col{
-    /* position: relative; */
-    /* overflow: hidden; */
     width: 32%;
     padding: 0 1%;
     box-shadow: 2px 2px 10px 2px black;
@@ -385,55 +379,216 @@ iframe{
     font-size: 20px;
 }
 
+/* ----------------------------------------------------------------Owner--------------------------------------------------------------- */
+.owner{
+    padding-top: 1%
+}
+.owner .owner-head{
+    font-family:'open sans';
+}
+.owner .owner-head h4{
+    color: #948989;
+    font-size: 100%;
+}
+.owner .owner-head h1{
+    font-size: 250%;
+    margin-bottom: 3%;
+}
+.register-image-container{
+    width: 90%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10%;
+    margin-left: 5%;
+}
+.owner .owner-lower .register{
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+    display: block;
+}
+.owner .owner-lower .register:hover {
+    transform: scale(1.1);
+}
+.owner .owner-lower .post-your-property {
+    text-align: left;
+    /* margin-left: 3%; */
+}
+.owner .owner-lower .post-your-property h6 ,.reviews .rev-heading h6{
+    font-size: 120%;
+    color: #948989;
+}
+.owner .owner-lower .post-your-property h3,.reviews .rev-heading h3 {
+    font-size: 340%;
+    margin-bottom: 2%;
+}
+.owner .owner-lower .post-your-property h5, .reviews .rev-heading h5{
+    font-size: 140%;
+    color: #948989;
+    margin-bottom: 2%;
+}
+.owner .owner-lower .post-your-property button{
+    background-color: var(--tertiary);
+    color: white;
+    padding: 3%;
+    border: none;
+    font-size: 100%;
+    font-weight: bold;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.owner .owner-lower .post-your-property button:hover ,footer .mail input[type="submit"]:hover{
+    background-color:#029270;
+    color: #ddd;
+}
 
+/* ---------------------------------------------Reviews------------------------------------------------------------- */
+.reviews .rev-heading{
+    margin: 1% 0% 1% 4%;
+    width: 50vw;
+}
+.reviews .slider {
+    width: 100%;
+    overflow: hidden;
+  }
+.reviews  .slider-container {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+
+.reviews  .review-card {
+    flex: 0 0 auto;
+    background-color:var(--background-color);
+    box-shadow: 0 4px 8px rgba(249, 173, 173, 0.1);
+    margin: 2%;
+    padding: 1%;
+    border-radius: 20px;
+    box-shadow: 3px 3px 5px 5px black;
+  }
+  .reviews .review-card:hover{
+    background-color: #8eba95;
+  }
+.reviews .review-card .review-img img{
+    width: 60%;
+    border-radius: 50%;
+  }
+  .reviews .rev-person{
+    text-align: left;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2% 0%;
+  }
+  .reviews .rev-person h4{
+    font-size: 200%;
+    line-height: 1.3em;
+  }
+  .reviews .rev-person h6{
+    font-size: 100%;
+    /* margin-bottom: 8%; */
+  }
+  .reviews .review-card .review-para{
+    text-align: left;
+    margin-left: 5%;
+    font-size: 110%;
+  }
+  .reviews button {
+    position: absolute;
+    /* top: 50%; */
+    transform: translateY(-650%);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.reviews button i{
+    font-size: 22px;
+}
+
+.reviews .prev {
+    left: 20px;
+}
+
+.reviews .next {
+    right: 20px;
+}
+div.reviews.container{
+    border-radius: 0 0 40px 40px;
+}
 /* ---------------------------------------------------------------  Upper Footer------------------------------------------------------------------------------- */
-footer .upper_footer{
-    background-color: var(--background-color);
-    padding-top: 5%;
+footer{
+    /* background-color: var(--tertiary); */
+    background: linear-gradient(to bottom,var(--background-color), var(--tertiary));
+}
+.upper_footer{
+    display: flex;
+    padding-top: 4%;
+    font-family: cursive;
 }
 .upper_footer .get-in-touch{
-    margin: -11% 0 0 15%;
+    /* margin: 0% 0 0 5%; */
+    padding-left: 5%;
 }
 
-.get-in-touch h4,.mail h4 {
+.get-in-touch h4{
+    /* font-family: cursive; */
     padding-bottom: 2%;
-    font-size: 210%;
+    font-size: 209%;
 }
-.get-in-touch p {
-    font-size: 120%;
-    padding: 0 0 1% 0 ;
+.get-in-touch p{
+    font-size: 111%;
+    font-weight: bold;
+    /* font-family:'sans-serif'; */
+}
+.upper_footer .mediums{
+    line-height: 2.5em;
 }
 .upper_footer .medium{
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-.upper_footer .medium i{
+.upper_footer .get-in-touch i{
     font-size: 150%;
-    padding-right: 2%;
-}
-.upper_footer .medium p{
-    font-size: 150%;
-    font-weight: bold;
-    font-family: 'math';
+    margin-right: 1%;
+    padding: 1%;
+    border-radius: 50%;
 }
 .upper_footer .medium p a {
     text-decoration: none;
-    color: rgba(0, 0, 0, 0.8);
-    font-weight: 300;
+    color: black;
+    font-weight: bold;
+    /* font-family:'sans-serif'; */
+}
+.upper_footer .mail{
+    padding:  0 5%;
+    /* border-left: 8px double var(--tertiary); */
+}
+.mail h4 {
+    padding-bottom: 2%;
+    font-size: 210%;
+    /* font-family: cursive; */
 }
 .upper_footer .mail label{
-
     font-size: 120%;
     font-weight: bold;
-    padding: 5% 0;
+    /* padding: 5% 0; */
 }
 .upper_footer .mail input[type="text"],.upper_footer .mail input[type="email"] {
-    width: 80%;
-    height: 5vh;
+    width: 100%;
+    height: 6vh;
+    /* margin-top: .5%; */
+}
+.upper_footer .mail input ,.upper_footer .mail textarea{
+    /* background:none; */
+    border: none;
+    /* border-bottom: 2px solid #000; */
+    padding: 5px;
+    box-sizing: border-box;
+    margin-bottom: 1%;
+    border-radius: 10px;
+    margin-top: .5%;
 }
 .upper_footer .mail textarea{
-    width: 80%;
+    width: 100%;
     height: 15vh;
 }
 .upper_footer .mail input[type="submit"]{
@@ -441,8 +596,16 @@ footer .upper_footer{
     color: white;
     background-color: var(--tertiary);
     font-size: 100%;
-    margin-top: 2%;
-    margin-bottom: 20%;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    cursor: pointer;
+}
+.mail_header{
+    width: 100%;
+}
+.mail .feild{
+    width: 48%;
+    /* margin-right: -12%; */
 }
 
 
@@ -452,16 +615,20 @@ footer .upper_footer{
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .upper_nav{
-        height: 10vh;
+        height: 6vh;
+        padding: 0 20px;
     }
-      .pages{
-        width: 100%;
+    .nav_content .logo {
+        margin-right: -75%;
+    }
+    .pages{
+        width: 150%;
     }
     .nav_content .pages li a, .pages li span, .pages li {
-        font-size: 87%;
+        font-size: 80%;
     }
     .front h2{
-        margin: 30% 0% 5% 0%;
+        margin: 37% 0% 10% 0%;
         font-size: 205%;
         line-height: 121%;
     }
@@ -488,11 +655,68 @@ footer .upper_footer{
         margin-bottom: 1%
       }
       .front .search .types{
-        margin: 0% 5%;
+        margin: 12% 5%;
       }
       .search li a{
-        font-size:44%;
+        font-size:68%;
     }
+    iframe{
+        width: 302.7px;
+        height: 170.1px;
+    }
+    .image-container {
+        height: 142px;
+    }
+    .recommended-properties .row .col .Property-name, .price {
+        font-size: 13px;
+    }
+    .recommended-properties .row .col .desc {
+        font-size: 10px;;
+    }
+    .price i {
+        font-size: 11px;
+    }
+    .owner .owner-head h1 {
+        font-size: 159%;
+        margin: 5%;
+    }
+    .owner .owner-lower .post-your-property {
+        text-align: center;
+        padding-top: 6%;
+    }
+    .owner .owner-lower .post-your-property h3{
+        font-size: 215%;
+        margin: 6% 0%;
+    }
+    .owner .owner-lower .post-your-property h5, .reviews .rev-heading h5 {
+        font-size: 96%;
+        margin-bottom: 5%;
+    }
+    .reviews .rev-heading h3 {
+        font-size: 200%;
+        margin: 4% 0%;
+    }
+    .reviews .review-card .review-img img {
+        width: 80%;
+    }
+    .reviews .rev-heading {
+        width: 80vw;
+    }
+    .reviews .rev-person h4 {
+        font-size: 197%;
+    }
+    .upper_footer .get-in-touch i {
+        font-size: 140%;
+    }
+    .upper_footer .get-in-touch {
+        padding-bottom: 7%;
+    }
+    .get-in-touch h4 ,.mail h4{
+        font-size: 218%; 
+    }  
+    .get-in-touch p,.upper_footer .mail label{
+        font-size: 112%;
+    } 
     .col-s-1 {width: 8.33%;}
     .col-s-2 {width: 16.66%;}
     .col-s-3 {width: 25%;}
@@ -510,17 +734,20 @@ footer .upper_footer{
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 601px) {
+    .upper_nav{
+        height: 8vh;
+    }
     .pages{
-        width: 72%;
+        width: 130%;
     }
     .nav_content .pages li a, .pages li span, .pages li {
-        font-size: 110%;
+        font-size: 85%;
     }
     .front h2{
-        padding-top: 15%;
-        font-size: 270%;
+        padding-top: 12%;
+        font-size: 293%;
         line-height: 144%;
-        margin-bottom: 0%;
+        margin-bottom: 6%;
     }
     .pages h2 div{
         font-size: 130%;
@@ -543,10 +770,57 @@ footer .upper_footer{
         width: 18vw;
     }
     .front .search .types{
-        margin: 3% -16%;
+        margin: 5% -16%;
     }
     .search li a{
-        font-size: 75%;
+        font-size: 110%;
+    } 
+    iframe{
+        width: 504px;
+        height: 283.5px;
+    }
+    .image-container {
+        height: 142px;
+    }
+    .recommended-properties .row .col .Property-name, .price {
+        font-size: 13px;
+    }
+    .recommended-properties .row .col .desc {
+        font-size: 10px;;
+    }
+    .price i {
+        font-size: 11px;
+    }
+    .owner .owner-lower .post-your-property {
+        text-align: center;
+        padding-top: 6%;
+    }
+    .owner .owner-lower .post-your-property h3{
+        font-size: 280%;
+        margin: 3% 0%;
+    }
+    .owner .owner-lower .post-your-property h5, .reviews .rev-heading h5 {
+        font-size: 96%;
+        margin-bottom: 5%;
+    }
+    .reviews .rev-heading h3 {
+        font-size: 200%;
+        margin: 4% 0%;
+    }
+    .reviews .review-card .review-img img {
+        width: 80%;
+    }
+    .reviews .rev-heading {
+        width: 65vw;
+    }
+    .upper_footer .get-in-touch i {
+        font-size: 140%;
+    }
+    .get-in-touch h4 ,.mail h4{
+        font-size: 175%; 
+    }  
+    .get-in-touch p,.upper_footer .mail label{
+        font-size: 100%;
     } 
     .col-s-1 {width: 8.33%;}
     .col-s-2 {width: 16.66%;}
@@ -565,10 +839,10 @@ footer .upper_footer{
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .pages{
-        width: 65%;
+        width: 105%;
     }
     .nav_content .pages li a, .pages li span, .pages li {
-        font-size: 122%;
+        font-size: 100%;
     }
     .front h2{
         padding-top: 15%;
@@ -597,30 +871,66 @@ footer .upper_footer{
         width: 18vw;
     }
     .front .search .types{
-        margin: 2% 0%;
+        margin: 2% 3%;
     }
     .search li a{
-        font-size: 74%;
+        font-size: 100%;
     } 
-    .col-s-1 {width: 8.33%;}
-    .col-s-2 {width: 16.66%;}
-    .col-s-3 {width: 25%;}
-    .col-s-4 {width: 33.33%;}
-    .col-s-5 {width: 41.66%;}
-    .col-s-6 {width: 50%;}
-    .col-s-7 {width: 58.33%;}
-    .col-s-8 {width: 66.66%;}
-    .col-s-9 {width: 75%;}
-    .col-s-10 {width: 83.33%;}
-    .col-s-11 {width: 91.66%;}
-    .col-s-12 {width: 100%;}
+    .recommended-properties .row .col .Property-name, .price {
+        font-size: 18px;
+    }
+    .recommended-properties .row .col .desc {
+        font-size: 11px;;
+    }
+    .price i {
+        font-size: 16px;
+    }
+    iframe{
+        width: 504px;
+        height: 283.5px;
+    }
+    .owner .owner-lower .post-your-property h3, .reviews .rev-heading h3 {
+        font-size: 220%;
+        margin: 3% 0%;
+    }
+    .owner .owner-lower .post-your-property h5, .reviews .rev-heading h5 {
+        font-size: 96%;
+        margin-bottom: 5%;
+    }
+    .reviews .review-card .review-img img {
+        width: 80%;
+    }
+    .reviews .rev-heading {
+        width: 65vw;
+    }
+    .upper_footer .get-in-touch i {
+        font-size: 100%;
+    }
+    .get-in-touch h4 ,.mail h4{
+        font-size: 133%; 
+    }  
+    .get-in-touch p,.upper_footer .mail label{
+        font-size: 70%;
+    } 
+    .col-m-1 {width: 8.33%;}
+    .col-m-2 {width: 16.66%;}
+    .col-m-3 {width: 25%;}
+    .col-m-4 {width: 33.33%;}
+    .col-m-5 {width: 41.66%;}
+    .col-m-6 {width: 50%;}
+    .col-m-7 {width: 58.33%;}
+    .col-m-8 {width: 66.66%;}
+    .col-m-9 {width: 75%;}
+    .col-m-10 {width: 83.33%;}
+    .col-m-11 {width: 91.66%;}
+    .col-m-12 {width: 100%;}
     
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     .pages{
-        width: 58%;
+        width: 150%;
     }
     .front h2{
         padding-top: 10%;
@@ -647,8 +957,40 @@ footer .upper_footer{
         padding: 1.5% 2%;
     }
     .front .search .types{
-        margin: 0% 0%;
+        margin: 1% 14%;
     }
+    .recommended-properties .row .col .Property-name, .price {
+        font-size: 25px;
+    }
+    .recommended-properties .row .col .desc {
+        font-size: 15px;;
+    }
+    .price i {
+        font-size: 20px;
+    }
+    iframe{
+        width: 268.8px;
+        height: 151.2px;
+    }
+    .recommended-properties .image-container{
+        height: 250px;
+        width: 100%;
+    }
+    .owner .owner-lower .post-your-property h3, .reviews .rev-heading h3 {
+        font-size: 300%;
+    }
+    .owner .owner-lower .post-your-property h5, .reviews .rev-heading h5 {
+        font-size: 115%;
+    }
+    .reviews .rev-heading {
+        width: 65vw;
+    }
+    .get-in-touch h4 ,.mail h4{
+        font-size: 172%; 
+    }  
+    .get-in-touch p,.upper_footer .mail label{
+        font-size: 90%;
+    } 
     .col-l-1 {width: 8.33%;}
     .col-l-2 {width: 16.66%;}
     .col-l-3 {width: 25%;}
@@ -667,7 +1009,7 @@ footer .upper_footer{
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
     .pages{
-        width: 48%;
+        width: 80%;
     }
     .front h2{
         padding-top: 5%;
@@ -694,8 +1036,27 @@ footer .upper_footer{
         padding: 1.5% 2%;
     }
     .front .search .types{
-        margin: 0% 0%;
+        margin: 1% 14%;
     }
+    .recommended-properties .row .col .Property-name, .price {
+        font-size: 30px;
+    }
+    .recommended-properties .row .col .desc {
+        font-size: 18px;;
+    }
+    .price i {
+        font-size: 22px;
+    }
+    iframe{
+        width :334.8px;
+        height :182.7px;
+    }
+    .get-in-touch h4 ,.mail h4{
+        font-size: 208%; 
+    }  
+    .get-in-touch p,.upper_footer .mail label{
+        font-size: 110%;
+    } 
     .col-l-1 {width: 8.33%;}
     .col-l-2 {width: 16.66%;}
     .col-l-3 {width: 25%;}
@@ -710,7 +1071,7 @@ footer .upper_footer{
     .col-l-12 {width: 100%;}
     
 }
-.col-3 {width: 20%;}
-.col-1 {width: 60%;}
+/* .col-3 {width: 20%;}
+.col-1 {width: 60%;} */
 
 
