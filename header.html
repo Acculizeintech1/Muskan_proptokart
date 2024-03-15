@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Header</title>
+    <style>
+      .upper_nav {
+        background-color: #264553;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+      }
+
+      .logo img {
+        height: 50px;
+      }
+
+      .pages ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .pages ul li {
+        display: inline-block;
+        margin-right: 20px;
+      }
+
+      .pages ul li:last-child {
+        margin-right: 0;
+      }
+
+      .pages ul li a {
+        color: white;
+        text-decoration: none;
+        padding: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .pages ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+      }
+
+      .pages ul li button {
+        background-color: #ffae2b;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .pages ul li button:hover {
+        background-color: #e67e22;
+      }
+      @media only screen and (max-width: 600px) {
+    .pages ul li {
+        display: inline-block;
+        margin-right: -9px;
+    }
+}
+    </style>
+  </head>
+  <body>
+    <div class="upper_nav">
+      <div class="logo">
+        <img src="Proptokart/proptokart.png" alt="Proptokart" srcset="" />
+      </div>
+      <div class="pages">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">Property</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li>
+            <i class="fa-solid fa-phone"></i><span> +91 724 860 5408</span>
+          </li>
+          <li>
+            <a href="add_property.php"><button type="button">Post your property for FREE</button></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </body>
+</html>
