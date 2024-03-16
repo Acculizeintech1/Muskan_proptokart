@@ -134,7 +134,6 @@ main{
     }
     main {
         max-height: fit-content;
-        margin-bottom: 5%;
         border-radius: 45px 45px 0 0;
     }
     body{
@@ -170,7 +169,6 @@ main{
     }
     main {
         max-height: fit-content;
-        margin-bottom: 5%;
         border-radius: 45px 45px 0 0;
     }
     .upper h3 {

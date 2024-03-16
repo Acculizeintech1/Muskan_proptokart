@@ -621,11 +621,11 @@ footer{
     .nav_content .logo {
         margin-right: -75%;
     }
-    .pages{
-        width: 150%;
+    header nav .nav_content .upper_nav .pages{
+        width: 168%;
     }
     .nav_content .pages li a, .pages li span, .pages li {
-        font-size: 80%;
+        font-size: 71%;
     }
     .front h2{
         margin: 37% 0% 10% 0%;
@@ -655,14 +655,20 @@ footer{
         margin-bottom: 1%
       }
       .front .search .types{
-        margin: 12% 5%;
+        margin: 12% -1%;
       }
       .search li a{
         font-size:68%;
     }
+    .row .border .dotted .mb-3{
+        font-size: 145%;
+    }
     iframe{
         width: 302.7px;
         height: 170.1px;
+    }
+    .recommended-properties .property-heading h1{
+        font-size: 260%;
     }
     .image-container {
         height: 142px;
