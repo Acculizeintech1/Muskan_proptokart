@@ -5,9 +5,6 @@
     box-sizing: border-box;
     font-family: cursive;
 }
-.pages ul > li:last-child {
-    display: none;
-}
 body{
     width: 100vw;
     height: 100vh;
@@ -24,7 +21,7 @@ main{
     margin: 0 auto;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    padding: 2%;
+    padding: 1% 2%;
 }
 .upper{
     width: 65vw;

@@ -1,21 +1,18 @@
 <?php
-// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Database connection parameters
+
     $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "office";
 
-    // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
+
     if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+        die ("Connection failed: " . $conn->connect_error);
     }
 
-    // Prepare and execute SQL statement to insert property details
     $sql = "INSERT INTO add_property (name, place, price) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sss", $_POST['name'], $_POST['place'], $_POST['price']);
@@ -23,7 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $property_id = $stmt->insert_id;
     $stmt->close();
 
-    // Loop through image files and upload to the database
     foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
         $image_data = file_get_contents($tmp_name);
         $image_name = $_FILES['images']['name'][$key];
@@ -38,7 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->close();
     }
 
-    // Loop through video files and upload to the database
     foreach ($_FILES['videos']['tmp_name'] as $key => $tmp_name) {
         $video_data = file_get_contents($tmp_name);
         $video_name = $_FILES['videos']['name'][$key];
@@ -53,23 +48,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->close();
     }
 
-    // Close the database connection
     $conn->close();
-
-    // Redirect to a success page or display a success message
-    header("Location: list.php");
-    exit();
+    echo "<script>alert('Property Added Successfully'); window.location.href = 'index.html';</script>";
+    exit;
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POST YOUR PROPERTY FOR FREE</title>
-    <link rel="stylesheet" href="property.css">
+    <link rel="stylesheet" href="css\property.css">
 </head>
+
 <body>
     <header>
         <?php include "header.html" ?>
@@ -114,4 +108,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     </main>
 </body>
+
 </html>

@@ -1,458 +1,724 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Proptocart</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav>
-            <div class="video-container">
-                <video autoplay muted loop id="video-background">
-                  <source src="Proptokart/background.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-                <div class="overlay"></div>
+      <nav>
+        <div class="video-container">
+          <video autoplay muted loop id="video-background">
+            <source src="Proptokart/background.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="overlay"></div>
+        </div>
+        <div class="nav_content">
+          <div class="upper_nav display_flex">
+            <div class="logo">
+              <img src="Proptokart/proptokart.png" alt="Proptokart" srcset="" />
             </div>
-            <div class="nav_content">
-                <div class="upper_nav display_flex">
-                    <div class="logo">
-                        <img src="Proptokart/proptokart.png"  alt="Proptokart" srcset="">
-                    </div>
-                    <div class="pages">
-                        <ul class="display_flex flex_wrap">
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="list.php">Property</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><i class="fa-solid fa-phone"></i><span> +91 724 860 5408</span></li> 
-                        </ul>
-                    </div>
-                </div>
-                <div class="front">
-                    <h2 class="text-center">Find a Perfect Home <div>To Live With Your Family</div></h2>
-                    <div class="search text-center">
-                        <div class="searchbar display_flex">
-                            <input type="text" name="Search" id="" placeholder="Enter an Address, state, City,area, Pin or zip">
-                            <button type="button">Search</button>
-                        </div>
-                        <div class="types">
-                            <ul class="display_flex flex_wrap">
-                                <li><a href="#" class="active">Buy</a></li>
-                                <li><a href="#">Rent</a></li>
-                                <!-- <li><a href="#">New Launch</a></li> -->
-                                <li><a href="#">PG / Co-living</a></li>
-                                <li><a href="#">Commercial</a></li>
-                                <li><a href="#">Plots / Land</a></li>
-                                <!-- <li><a href="#">Projects</a></li> -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+            <div class="pages">
+              <ul class="display_flex flex_wrap">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Property</a></li>
+                <li><a href="#footer">Contact Us</a></li>
+                <li>
+                  <a href="add_property.php"
+                    ><button type="button">
+                      Post your property for FREE
+                    </button></a
+                  >
+                </li>
+                <li>
+                  <a href="login_form.php"
+                    ><i class="fa-solid fa-circle-user"></i
+                  ></a>
+                </li>
+              </ul>
             </div>
-        </nav>
-    </header> 
+          </div>
+          <div class="front">
+            <h2 class="text-center">
+              Find a Perfect Home
+              <div>To Live With Your Family</div>
+            </h2>
+            <div class="search text-center">
+              <div class="searchbar display_flex">
+                <input
+                  type="text"
+                  name="Search"
+                  id=""
+                  placeholder="Enter an Address, state, City,area, Pin or zip"
+                />
+                <button type="button">Search</button>
+              </div>
+              <div class="types">
+                <ul class="display_flex flex_wrap">
+                  <li><a href="#" class="active">Buy</a></li>
+                  <li><a href="#">Rent</a></li>
+                  <!-- <li><a href="#">New Launch</a></li> -->
+                  <li><a href="#">PG / Co-living</a></li>
+                  <li><a href="#">Commercial</a></li>
+                  <li><a href="#">Plots / Land</a></li>
+                  <!-- <li><a href="#">Projects</a></li> -->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
     <main>
-        <!-- -----------------------------------------------------------------property Types--------------------------------------------------------- -->
-        <div class="section">
-            <div class="container text-center mx-auto pd">
-                <div class="text-center mx-auto mb-3 wow" style="max-width: 600px; animation-delay: 0.1s;">
-                    <h1>Property Types</h1>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto dolores dignissimos quibusdam sint dolor vitae rem! Beatae ex labore repellendus, numquam ipsum fugiat earum.</p>
-                </div>
-                <div class="row">
-                    <div class="col-l-3 col-s-6 wow mg pd border" style="animation-delay: 0.1s;">
-                        <div class="dotted">
-                            <img class="icon-fluid mb-3" src="img/icon-apartment.png" alt="Icon">
-                            <h6 class="mb-3">Apartment</h6>
-                            <span>123 Properties</span>
-                        </div>
-                    </div>
-                    <div class="col-l-3 col-s-6 wow mg pd border" style="animation-delay: 0.3s;">
-                        <div class="dotted">
-                            <img class="icon-fluid mb-3" src="img/icon-building.png" alt="Icon">
-                            <h6 class="mb-3">Building</h6>
-                            <span>123 Properties</span>
-                        </div>
-                    </div>
-                    <div class="col-l-3 col-s-6 wow mg pd border" style="animation-delay: 0.5s;">
-                        <div class="dotted">
-                            <img class="icon-fluid mb-3" src="img/icon-condominium.png" alt="Icon">
-                            <h6 class="mb-3">Duplex</h6>
-                            <span>123 Properties</span>
-                        </div>
-                    </div>
-                    <div class="col-l-3 col-s-6 wow mg pd border" style="animation-delay: 0.7s;">
-                        <div class="dotted">
-                            <img class="icon-fluid mb-3" src="img/icon-deal.png" alt="Icon">
-                            <h6 class="mb-3">Deal</h6>
-                            <span>123 Properties</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-l-3 col-s-6 wow mg pd border">
-                        <div class="dotted">
-                            <img class="icon-fluid mb-3" src="img/icon-house.png" alt="Icon">
-                            <h6 class="mb-3">House</h6>
-                            <span>123 Properties</span>
-                        </div>
-                    </div>
-                    <div class="col-l-3 col-s-6 wow mg pd border">
-                        <div class="dotted">
-                            <img class="icon-fluid mb-3" src="img/icon-housing.png" alt="Icon">
-                            <h6 class="mb-3">Housing</h6>
-                            <span>123 Properties</span>
-                        </div>
-                    </div>
-                    <div class="col-l-3 col-s-6 wow mg pd border">
-                        <div class="dotted">
-                            <img class="icon-fluid mb-3" src="img/icon-luxury.png" alt="Icon">
-                            <h6 class="mb-3">Luxury</h6>
-                            <span>123 Properties</span>
-                        </div>
-                    </div>
-                    <div class="col-l-3 col-s-6 wow mg pd border">
-                        <div class="dotted">
-                            <img class="icon-fluid mb-3" src="img/icon-villa.png" alt="Icon">
-                            <h6 class="mb-3">Villa</h6>
-                            <span>123 Properties</span>
-                        </div>
-                    </div>
-                </div>
+      <!-- -----------------------------------------------------------------property Types--------------------------------------------------------- -->
+      <div class="section">
+        <div class="container text-center mx-auto pd">
+          <div
+            class="text-center mx-auto mb-3 wow"
+            style="max-width: 600px; animation-delay: 0.1s"
+          >
+            <h1>Property Types</h1>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Architecto dolores dignissimos quibusdam sint dolor vitae rem!
+              Beatae ex labore repellendus, numquam ipsum fugiat earum.
+            </p>
+          </div>
+          <div class="row">
+            <div
+              class="col-l-3 col-s-6 wow mg pd border"
+              style="animation-delay: 0.1s"
+            >
+              <div class="dotted">
+                <img
+                  class="icon-fluid mb-3"
+                  src="img/icon-apartment.png"
+                  alt="Icon"
+                />
+                <h6 class="mb-3">Apartment</h6>
+                <span>123 Properties</span>
+              </div>
             </div>
+            <div
+              class="col-l-3 col-s-6 wow mg pd border"
+              style="animation-delay: 0.3s"
+            >
+              <div class="dotted">
+                <img
+                  class="icon-fluid mb-3"
+                  src="img/icon-building.png"
+                  alt="Icon"
+                />
+                <h6 class="mb-3">Building</h6>
+                <span>123 Properties</span>
+              </div>
+            </div>
+            <div
+              class="col-l-3 col-s-6 wow mg pd border"
+              style="animation-delay: 0.5s"
+            >
+              <div class="dotted">
+                <img
+                  class="icon-fluid mb-3"
+                  src="img/icon-condominium.png"
+                  alt="Icon"
+                />
+                <h6 class="mb-3">Duplex</h6>
+                <span>123 Properties</span>
+              </div>
+            </div>
+            <div
+              class="col-l-3 col-s-6 wow mg pd border"
+              style="animation-delay: 0.7s"
+            >
+              <div class="dotted">
+                <img
+                  class="icon-fluid mb-3"
+                  src="img/icon-deal.png"
+                  alt="Icon"
+                />
+                <h6 class="mb-3">Deal</h6>
+                <span>123 Properties</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-l-3 col-s-6 wow mg pd border">
+              <div class="dotted">
+                <img
+                  class="icon-fluid mb-3"
+                  src="img/icon-house.png"
+                  alt="Icon"
+                />
+                <h6 class="mb-3">House</h6>
+                <span>123 Properties</span>
+              </div>
+            </div>
+            <div class="col-l-3 col-s-6 wow mg pd border">
+              <div class="dotted">
+                <img
+                  class="icon-fluid mb-3"
+                  src="img/icon-housing.png"
+                  alt="Icon"
+                />
+                <h6 class="mb-3">Housing</h6>
+                <span>123 Properties</span>
+              </div>
+            </div>
+            <div class="col-l-3 col-s-6 wow mg pd border">
+              <div class="dotted">
+                <img
+                  class="icon-fluid mb-3"
+                  src="img/icon-luxury.png"
+                  alt="Icon"
+                />
+                <h6 class="mb-3">Luxury</h6>
+                <span>123 Properties</span>
+              </div>
+            </div>
+            <div class="col-l-3 col-s-6 wow mg pd border">
+              <div class="dotted">
+                <img
+                  class="icon-fluid mb-3"
+                  src="img/icon-villa.png"
+                  alt="Icon"
+                />
+                <h6 class="mb-3">Villa</h6>
+                <span>123 Properties</span>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- -----------------------------------------------------------------Videos--------------------------------------------------------- -->
-            <div class="container text-center mx-auto pd">
-                <div class="text-center mx-auto mb-3 wow mt" style="max-width: 600px;">
-                    <h1>Videos</h1>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Architecto dolores dignissimos quibusdam sint dolor vitae rem! Beatae ex labore repellendus, numquam ipsum fugiat earum.</p>
-                </div>
-                <div class="row flex_wrap">
-                    <div class="col-l-4 col-m-12 col-s-12 wow mg border" style="padding: 2% 0;">
-                        <iframe src="https://www.youtube.com/embed/9aH1axbxa_Q?si=0Q6WlzLZdAKmLTdi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <div class="col-l-4 col-m-12 col-s-12 wow mg border" style="padding: 2% 0;">
-                        <iframe src="https://www.youtube.com/embed/aaPuFkwQ2JQ?si=FqZ3-OCL9Msae14R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <div class="col-l-4 col-m-12 col-s-12 wow mg border" style="padding: 2% 0;">
-                        <iframe src="https://www.youtube.com/embed/FqenUxku3SM?si=HN6vXXjcWXna7czC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <!-- <div class="col-l-3 col-s-12 wow  border">
+        <div class="container text-center mx-auto pd">
+          <div class="text-center mx-auto mb-3 wow mt" style="max-width: 600px">
+            <h1>Videos</h1>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Architecto dolores dignissimos quibusdam sint dolor vitae rem!
+              Beatae ex labore repellendus, numquam ipsum fugiat earum.
+            </p>
+          </div>
+          <div class="row flex_wrap">
+            <div
+              class="col-l-4 col-m-12 col-s-12 wow mg border"
+              style="padding: 2% 0"
+            >
+              <iframe
+                src="https://www.youtube.com/embed/9aH1axbxa_Q?si=0Q6WlzLZdAKmLTdi"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div
+              class="col-l-4 col-m-12 col-s-12 wow mg border"
+              style="padding: 2% 0"
+            >
+              <iframe
+                src="https://www.youtube.com/embed/aaPuFkwQ2JQ?si=FqZ3-OCL9Msae14R"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div
+              class="col-l-4 col-m-12 col-s-12 wow mg border"
+              style="padding: 2% 0"
+            >
+              <iframe
+                src="https://www.youtube.com/embed/FqenUxku3SM?si=HN6vXXjcWXna7czC"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <!-- <div class="col-l-3 col-s-12 wow  border">
                         <iframe width="270" height="175.5" src="https://www.youtube.com/embed/EjPNKtfdywg?si=PpemQPaij23sycbB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div> -->
-                </div>
-            </div>
-<!-- -------------------------------------------------------------------------property Listing------------------------------------------- -->
-            <div class="recommended-properties container text-center mx-auto pd">
-                <div class="property-heading mx-auto mb-3">
-                    <h1>Recommended Properties</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, illo.</p>
-                </div>
-                <div class="slide_row text-center">
-                    <div class="row text-center">
-                        <div class="col">
-                            <div class="image-container">
-                                <img class="image-fluid" src="Proptokart/p1.jpg" alt="" srcset="">
-                            </div>
-                            <div class="desc-box">
-                                <p class = "Property-name">Golden Area Urban</p>
-                                <p class="desc">123 street, Uttar Pradesh, Agra</p>
-                                <p class="price"><i class="fa-solid fa-indian-rupee-sign"></i> 2 - 8 Lacs</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="image-container">
-                                <img class="image-fluid" src="Proptokart/p2.jpg" alt="" srcset="">
-                            </div>
-                            <div class="desc-box">
-                                <p class = "Property-name">Golden Area Urban</p>
-                                <p class="desc">123 street, Uttar Pradesh, Agra</p>
-                                <p class="price"><i class="fa-solid fa-indian-rupee-sign"></i> 2 - 8 Lacs</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="image-container">
-                                <img class="image-fluid" src="Proptokart/p3.jpg" alt="" srcset="">
-                            </div>
-                            <div class="desc-box">
-                                <p class = "Property-name">Golden Area Urban</p>
-                                <p class="desc">123 street, Uttar Pradesh, Agra</p>
-                                <p class="price"><i class="fa-solid fa-indian-rupee-sign"></i> 2 - 8 Lacs</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide_row text-center">
-                    <div class="row text-center">
-                        <div class="col">
-                            <div class="image-container">
-                                <img class="image-fluid" src="Proptokart/p4.jpg" alt="" srcset="">
-                            </div>
-                            <div class="desc-box">
-                                <p class = "Property-name">Golden Area Urban</p>
-                                <p class="desc">123 street, Uttar Pradesh, Agra</p>
-                                <p class="price"><i class="fa-solid fa-indian-rupee-sign"></i> 2 - 8 Lacs</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="image-container">
-                                <img class="image-fluid" src="Proptokart/p5.jpg" alt="" srcset="">
-                            </div>
-                            <div class="desc-box">
-                                <p class = "Property-name">Golden Area Urban</p>
-                                <p class="desc">123 street, Uttar Pradesh, Agra</p>
-                                <p class="price"><i class="fa-solid fa-indian-rupee-sign"></i> 2 - 8 Lacs</p>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="image-container">
-                                <img class="image-fluid" src="Proptokart/p6.jpg" alt="" srcset="">
-                            </div>
-                            <div class="desc-box">
-                                <p class = "Property-name">Golden Area Urban</p>
-                                <p class="desc">123 street, Uttar Pradesh, Agra</p>
-                                <p class="price"><i class="fa-solid fa-indian-rupee-sign"></i> 2 - 8 Lacs</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide_row text-center">
-                    <div class="row text-center">
-                        <div class="col">
-                            <div class="image-container">
-                                <img class="image-fluid" src="Proptokart/p7.jpg" alt="" srcset="">
-                            </div>
-                            <div class="desc-box">
-                                <p class = "Property-name">Golden Area Urban</p>
-                                <p class="desc">123 street, Uttar Pradesh, Agra</p>
-                                <p class="price"><i class="fa-solid fa-indian-rupee-sign"></i> 2 - 8 Lacs</p>
-                            </div> 
-                        </div>
-                        <div class="col">
-                            <div class="image-container">
-                                <img class="image-fluid" src="Proptokart/p1.jpg" alt="" srcset="">
-                            </div>
-                            <div class="desc-box">
-                                <p class = "Property-name">Golden Area Urban</p>
-                                <p class="desc">123 street, Uttar Pradesh, Agra</p>
-                                <p class="price"><i class="fa-solid fa-indian-rupee-sign"></i> 2 - 8 Lacs</p>
-                            </div> 
-                        </div>
-                        <div class="col">
-                            <div class="image-container">
-                                <img class="image-fluid" src="Proptokart/p2.jpg" alt="" srcset="">
-                            </div>
-                            <div class="desc-box">
-                                <p class = "Property-name">Golden Area Urban</p>
-                                <p class="desc">123 street, Uttar Pradesh, Agra</p>
-                                <p class="price"><i class="fa-solid fa-indian-rupee-sign"></i> 2 - 8 Lacs</p>
-                            </div> 
-                        </div>
-                    </div>
-                </div>
-                <button class="prev" onclick="moveSlide(-1)"><i class="fa-solid fa-circle-chevron-left"></i></button>
-                <button class="next" onclick="moveSlide(1)"><i class="fa-solid fa-circle-chevron-right"></i></button>
-                <div class="dots text-center">
-                    <span class="dot" onclick="currentSlide(1)"></span>
-                    <span class="dot" onclick="currentSlide(2)"></span>
-                    <span class="dot" onclick="currentSlide(3)"></span>
-                </div>
-            </div> 
-            <!-- -------------------------------------------------Owner ------------------------------------------------------------- -->
-            <div class="owner container text-center mx-auto pd">
-                <div class="owner-head text-center">
-                    <h4>ARE YOU AN OWNER</h4>
-                    <H1>Sell or Rent your property<br> fast with Proptokart</H1>
-                </div>
-                <div class="owner-lower display_flex flex_wrap">
-                    <div class="col-l-6 col-m-6 col-s-12">
-                        <div class="register-image-container">
-                            <img src="Proptokart/register_property.jpg" alt="Register Your Property" class="register">
-                        </div>
-                    </div>
-                    <div class="col-l-6 col-m-6 col-s-12 post-your-property">
-                        <h6>POST YOUR PROPERTY</h6>
-                        <H3>Register to post your property for <span>FREE</span></H3>
-                        <h5>Sell or rent your residential /commercial property</h5>
-                        <a href="add_property.php"><button type="button">Post your property for FREE</button></a>
-                    </div>
-                </div>
-            </div>
-            <!-- ------------------------------------------------reviews----------------------------------------------------------- -->
-            <div class="reviews container mx-auto pd">
-                <div class="rev-heading">
-                    <h6>TESTIMONIALS</h6>
-                    <H3>What our customers are saying about Proptokart</H3>
-                    <h5>Hear from our satisfied buyers, tenants, owners and dealers</h5>
-                </div>
-                <div class="slider">
-                    <div class="slider-container">
-                        <div class="review-card col-l-4 col-m-6 col-s-9">
-                            <div class="rev-person display_flex">
-                                <div class="review-img col-l-3 col-s-3 text-center">
-                                    <img src="Proptokart/p1.jpg" alt="" srcset="">
-                                </div>
-                                <div class="rev-person col-l-9 col-s-9">
-                                    <h4>Muskan Jain</h4>
-                                    <h6>Jangjeet Nagar, Agra</h6>
-                                </div>
-                            </div>
-                            <div class="review-para">
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore necessitatibus quis possimus accusantium? Dolor hic consequatur doloremque harum voluptatem rem ducimus voluptates ut obcaecati?</p>
-                            </div>
-                        </div>
-                        <div class="review-card col-l-4 col-m-6 col-s-9">
-                            <div class="rev-person display_flex">
-                                <div class="review-img col-l-3 col-s-3 text-center">
-                                    <img src="Proptokart/p1.jpg" alt="" srcset="">
-                                </div>
-                                <div class="rev-person col-l-9 col-s-9">
-                                    <h4>Muskan Jain</h4>
-                                    <h6>Jangjeet Nagar, Agra</h6>
-                                </div>
-                            </div>
-                            <div class="review-para">
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore necessitatibus quis possimus accusantium? Dolor hic consequatur doloremque harum voluptatem rem ducimus voluptates ut obcaecati?</p>
-                            </div>
-                        </div>
-                        <div class="review-card col-l-4 col-m-6 col-s-9">
-                            <div class="rev-person display_flex">
-                                <div class="review-img col-l-3 col-s-3 text-center">
-                                    <img src="Proptokart/p1.jpg" alt="" srcset="">
-                                </div>
-                                <div class="rev-person col-l-9 col-s-9">
-                                    <h4>Muskan Jain</h4>
-                                    <h6>Jangjeet Nagar, Agra</h6>
-                                </div>
-                            </div>
-                            <div class="review-para">
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore necessitatibus quis possimus accusantium? Dolor hic consequatur doloremque harum voluptatem rem ducimus voluptates ut obcaecati?</p>
-                            </div>
-                        </div>
-                        <div class="review-card col-l-4 col-m-6 col-s-9">
-                            <div class="rev-person display_flex">
-                                <div class="review-img col-l-3 col-s-3 text-center">
-                                    <img src="Proptokart/p1.jpg" alt="" srcset="">
-                                </div>
-                                <div class="rev-person col-l-9 col-s-9">
-                                    <h4>Muskan Jain</h4>
-                                    <h6>Jangjeet Nagar, Agra</h6>
-                                </div>
-                            </div>
-                            <div class="review-para">
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore necessitatibus quis possimus accusantium? Dolor hic consequatur doloremque harum voluptatem rem ducimus voluptates ut obcaecati?</p>
-                            </div>
-                        </div>
-                        <div class="review-card col-l-4 col-m-6 col-s-9">
-                            <div class="rev-person display_flex">
-                                <div class="review-img col-l-3 col-s-3 text-center">
-                                    <img src="Proptokart/p1.jpg" alt="" srcset="">
-                                </div>
-                                <div class="rev-person col-l-9 col-s-9">
-                                    <h4>Muskan Jain</h4>
-                                    <h6>Jangjeet Nagar, Agra</h6>
-                                </div>
-                            </div>
-                            <div class="review-para">
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore necessitatibus quis possimus accusantium? Dolor hic consequatur doloremque harum voluptatem rem ducimus voluptates ut obcaecati?</p>
-                            </div>
-                        </div>
-                        <div class="review-card col-l-4 col-m-6 col-s-9">
-                            <div class="rev-person display_flex">
-                                <div class="review-img col-l-3 col-s-3 text-center">
-                                    <img src="Proptokart/p1.jpg" alt="" srcset="">
-                                </div>
-                                <div class="rev-person col-l-9 col-s-9">
-                                    <h4>Muskan Jain</h4>
-                                    <h6>Jangjeet Nagar, Agra</h6>
-                                </div>
-                            </div>
-                            <div class="review-para">
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore necessitatibus quis possimus accusantium? Dolor hic consequatur doloremque harum voluptatem rem ducimus voluptates ut obcaecati?</p>
-                            </div>
-                        </div>
-                        <div class="review-card col-l-4 col-m-6 col-s-9">
-                            <div class="rev-person display_flex">
-                                <div class="review-img col-l-3 col-s-3 text-center">
-                                    <img src="Proptokart/p1.jpg" alt="" srcset="">
-                                </div>
-                                <div class="rev-person col-l-9 col-s-9">
-                                    <h4>Muskan Jain</h4>
-                                    <h6>Jangjeet Nagar, Agra</h6>
-                                </div>
-                            </div>
-                            <div class="review-para">
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore necessitatibus quis possimus accusantium? Dolor hic consequatur doloremque harum voluptatem rem ducimus voluptates ut obcaecati?</p>
-                            </div>
-                        </div>
-                        <div class="review-card col-l-4 col-m-6 col-s-9">
-                            <div class="rev-person display_flex">
-                                <div class="review-img col-l-3 col-s-3 text-center">
-                                    <img src="Proptokart/p1.jpg" alt="" srcset="">
-                                </div>
-                                <div class="rev-person col-l-9 col-s-9">
-                                    <h4>Muskan Jain</h4>
-                                    <h6>Jangjeet Nagar, Agra</h6>
-                                </div>
-                            </div>
-                            <div class="review-para">
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore necessitatibus quis possimus accusantium? Dolor hic consequatur doloremque harum voluptatem rem ducimus voluptates ut obcaecati?</p>
-                            </div>
-                        </div> 
-                    </div>
-                    <button class="prev" onclick="prevSlide()"><i class="fa-solid fa-circle-chevron-left"></i></button>
-                    <button class="next" onclick="nextSlide()"><i class="fa-solid fa-circle-chevron-right"></i></button>
-                </div>
-            </div>
+          </div>
         </div>
+        <!-- -------------------------------------------------------------------------property Listing------------------------------------------- -->
+        <div class="recommended-properties container text-center mx-auto pd">
+          <div class="property-heading mx-auto mb-3">
+            <h1>Recommended Properties</h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptatem, illo.
+            </p>
+          </div>
+          <div class="slide_row text-center">
+            <div class="row text-center">
+              <div class="col">
+                <div class="image-container">
+                  <img
+                    class="image-fluid"
+                    src="Proptokart/p1.jpg"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+                <div class="desc-box">
+                  <p class="Property-name">Golden Area Urban</p>
+                  <p class="desc">123 street, Uttar Pradesh, Agra</p>
+                  <p class="price">
+                    <i class="fa-solid fa-indian-rupee-sign"></i> 2 - 8 Lacs
+                  </p>
+                </div>
+              </div>
+              <div class="col">
+                <div class="image-container">
+                  <img
+                    class="image-fluid"
+                    src="Proptokart/p2.jpg"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+                <div class="desc-box">
+                  <p class="Property-name">Golden Area Urban</p>
+                  <p class="desc">123 street, Uttar Pradesh, Agra</p>
+                  <p class="price">
+                    <i class="fa-solid fa-indian-rupee-sign"></i> 2 - 8 Lacs
+                  </p>
+                </div>
+              </div>
+              <div class="col">
+                <div class="image-container">
+                  <img
+                    class="image-fluid"
+                    src="Proptokart/p3.jpg"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+                <div class="desc-box">
+                  <p class="Property-name">Golden Area Urban</p>
+                  <p class="desc">123 street, Uttar Pradesh, Agra</p>
+                  <p class="price">
+                    <i class="fa-solid fa-indian-rupee-sign"></i> 2 - 8 Lacs
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slide_row text-center">
+            <div class="row text-center">
+              <div class="col">
+                <div class="image-container">
+                  <img
+                    class="image-fluid"
+                    src="Proptokart/p4.jpg"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+                <div class="desc-box">
+                  <p class="Property-name">Golden Area Urban</p>
+                  <p class="desc">123 street, Uttar Pradesh, Agra</p>
+                  <p class="price">
+                    <i class="fa-solid fa-indian-rupee-sign"></i> 2 - 8 Lacs
+                  </p>
+                </div>
+              </div>
+              <div class="col">
+                <div class="image-container">
+                  <img
+                    class="image-fluid"
+                    src="Proptokart/p5.jpg"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+                <div class="desc-box">
+                  <p class="Property-name">Golden Area Urban</p>
+                  <p class="desc">123 street, Uttar Pradesh, Agra</p>
+                  <p class="price">
+                    <i class="fa-solid fa-indian-rupee-sign"></i> 2 - 8 Lacs
+                  </p>
+                </div>
+              </div>
+              <div class="col">
+                <div class="image-container">
+                  <img
+                    class="image-fluid"
+                    src="Proptokart/p6.jpg"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+                <div class="desc-box">
+                  <p class="Property-name">Golden Area Urban</p>
+                  <p class="desc">123 street, Uttar Pradesh, Agra</p>
+                  <p class="price">
+                    <i class="fa-solid fa-indian-rupee-sign"></i> 2 - 8 Lacs
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="slide_row text-center">
+            <div class="row text-center">
+              <div class="col">
+                <div class="image-container">
+                  <img
+                    class="image-fluid"
+                    src="Proptokart/p7.jpg"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+                <div class="desc-box">
+                  <p class="Property-name">Golden Area Urban</p>
+                  <p class="desc">123 street, Uttar Pradesh, Agra</p>
+                  <p class="price">
+                    <i class="fa-solid fa-indian-rupee-sign"></i> 2 - 8 Lacs
+                  </p>
+                </div>
+              </div>
+              <div class="col">
+                <div class="image-container">
+                  <img
+                    class="image-fluid"
+                    src="Proptokart/p1.jpg"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+                <div class="desc-box">
+                  <p class="Property-name">Golden Area Urban</p>
+                  <p class="desc">123 street, Uttar Pradesh, Agra</p>
+                  <p class="price">
+                    <i class="fa-solid fa-indian-rupee-sign"></i> 2 - 8 Lacs
+                  </p>
+                </div>
+              </div>
+              <div class="col">
+                <div class="image-container">
+                  <img
+                    class="image-fluid"
+                    src="Proptokart/p2.jpg"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+                <div class="desc-box">
+                  <p class="Property-name">Golden Area Urban</p>
+                  <p class="desc">123 street, Uttar Pradesh, Agra</p>
+                  <p class="price">
+                    <i class="fa-solid fa-indian-rupee-sign"></i> 2 - 8 Lacs
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="prev" onclick="moveSlide(-1)">
+            <i class="fa-solid fa-circle-chevron-left"></i>
+          </button>
+          <button class="next" onclick="moveSlide(1)">
+            <i class="fa-solid fa-circle-chevron-right"></i>
+          </button>
+          <div class="dots text-center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+          </div>
+        </div>
+        <!-- -------------------------------------------------Owner ------------------------------------------------------------- -->
+        <div class="owner container text-center mx-auto pd">
+          <div class="owner-head text-center">
+            <h4>ARE YOU AN OWNER</h4>
+            <h1>
+              Sell or Rent your property<br />
+              fast with Proptokart
+            </h1>
+          </div>
+          <div class="owner-lower display_flex flex_wrap">
+            <div class="col-l-6 col-m-6 col-s-12">
+              <div class="register-image-container">
+                <img
+                  src="Proptokart/register_property.jpg"
+                  alt="Register Your Property"
+                  class="register"
+                />
+              </div>
+            </div>
+            <div class="col-l-6 col-m-6 col-s-12 post-your-property">
+              <h6>POST YOUR PROPERTY</h6>
+              <h3>Register to post your property for <span>FREE</span></h3>
+              <h5>Sell or rent your residential /commercial property</h5>
+              <a href="add_property.php"
+                ><button type="button">Post your property for FREE</button></a
+              >
+            </div>
+          </div>
+        </div>
+        <!-- ------------------------------------------------reviews----------------------------------------------------------- -->
+        <div class="reviews container mx-auto pd">
+          <div class="rev-heading">
+            <h6>TESTIMONIALS</h6>
+            <h3>What our customers are saying about Proptokart</h3>
+            <h5>Hear from our satisfied buyers, tenants, owners and dealers</h5>
+          </div>
+          <div class="slider">
+            <div class="slider-container">
+              <div class="review-card col-l-4 col-m-6 col-s-9">
+                <div class="rev-person display_flex">
+                  <div class="review-img col-l-3 col-s-3 text-center">
+                    <img src="Proptokart/p1.jpg" alt="" srcset="" />
+                  </div>
+                  <div class="rev-person col-l-9 col-s-9">
+                    <h4>Muskan Jain</h4>
+                    <h6>Jangjeet Nagar, Agra</h6>
+                  </div>
+                </div>
+                <div class="review-para">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Inventore necessitatibus quis possimus accusantium? Dolor
+                    hic consequatur doloremque harum voluptatem rem ducimus
+                    voluptates ut obcaecati?
+                  </p>
+                </div>
+              </div>
+              <div class="review-card col-l-4 col-m-6 col-s-9">
+                <div class="rev-person display_flex">
+                  <div class="review-img col-l-3 col-s-3 text-center">
+                    <img src="Proptokart/p1.jpg" alt="" srcset="" />
+                  </div>
+                  <div class="rev-person col-l-9 col-s-9">
+                    <h4>Muskan Jain</h4>
+                    <h6>Jangjeet Nagar, Agra</h6>
+                  </div>
+                </div>
+                <div class="review-para">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Inventore necessitatibus quis possimus accusantium? Dolor
+                    hic consequatur doloremque harum voluptatem rem ducimus
+                    voluptates ut obcaecati?
+                  </p>
+                </div>
+              </div>
+              <div class="review-card col-l-4 col-m-6 col-s-9">
+                <div class="rev-person display_flex">
+                  <div class="review-img col-l-3 col-s-3 text-center">
+                    <img src="Proptokart/p1.jpg" alt="" srcset="" />
+                  </div>
+                  <div class="rev-person col-l-9 col-s-9">
+                    <h4>Muskan Jain</h4>
+                    <h6>Jangjeet Nagar, Agra</h6>
+                  </div>
+                </div>
+                <div class="review-para">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Inventore necessitatibus quis possimus accusantium? Dolor
+                    hic consequatur doloremque harum voluptatem rem ducimus
+                    voluptates ut obcaecati?
+                  </p>
+                </div>
+              </div>
+              <div class="review-card col-l-4 col-m-6 col-s-9">
+                <div class="rev-person display_flex">
+                  <div class="review-img col-l-3 col-s-3 text-center">
+                    <img src="Proptokart/p1.jpg" alt="" srcset="" />
+                  </div>
+                  <div class="rev-person col-l-9 col-s-9">
+                    <h4>Muskan Jain</h4>
+                    <h6>Jangjeet Nagar, Agra</h6>
+                  </div>
+                </div>
+                <div class="review-para">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Inventore necessitatibus quis possimus accusantium? Dolor
+                    hic consequatur doloremque harum voluptatem rem ducimus
+                    voluptates ut obcaecati?
+                  </p>
+                </div>
+              </div>
+              <div class="review-card col-l-4 col-m-6 col-s-9">
+                <div class="rev-person display_flex">
+                  <div class="review-img col-l-3 col-s-3 text-center">
+                    <img src="Proptokart/p1.jpg" alt="" srcset="" />
+                  </div>
+                  <div class="rev-person col-l-9 col-s-9">
+                    <h4>Muskan Jain</h4>
+                    <h6>Jangjeet Nagar, Agra</h6>
+                  </div>
+                </div>
+                <div class="review-para">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Inventore necessitatibus quis possimus accusantium? Dolor
+                    hic consequatur doloremque harum voluptatem rem ducimus
+                    voluptates ut obcaecati?
+                  </p>
+                </div>
+              </div>
+              <div class="review-card col-l-4 col-m-6 col-s-9">
+                <div class="rev-person display_flex">
+                  <div class="review-img col-l-3 col-s-3 text-center">
+                    <img src="Proptokart/p1.jpg" alt="" srcset="" />
+                  </div>
+                  <div class="rev-person col-l-9 col-s-9">
+                    <h4>Muskan Jain</h4>
+                    <h6>Jangjeet Nagar, Agra</h6>
+                  </div>
+                </div>
+                <div class="review-para">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Inventore necessitatibus quis possimus accusantium? Dolor
+                    hic consequatur doloremque harum voluptatem rem ducimus
+                    voluptates ut obcaecati?
+                  </p>
+                </div>
+              </div>
+              <div class="review-card col-l-4 col-m-6 col-s-9">
+                <div class="rev-person display_flex">
+                  <div class="review-img col-l-3 col-s-3 text-center">
+                    <img src="Proptokart/p1.jpg" alt="" srcset="" />
+                  </div>
+                  <div class="rev-person col-l-9 col-s-9">
+                    <h4>Muskan Jain</h4>
+                    <h6>Jangjeet Nagar, Agra</h6>
+                  </div>
+                </div>
+                <div class="review-para">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Inventore necessitatibus quis possimus accusantium? Dolor
+                    hic consequatur doloremque harum voluptatem rem ducimus
+                    voluptates ut obcaecati?
+                  </p>
+                </div>
+              </div>
+              <div class="review-card col-l-4 col-m-6 col-s-9">
+                <div class="rev-person display_flex">
+                  <div class="review-img col-l-3 col-s-3 text-center">
+                    <img src="Proptokart/p1.jpg" alt="" srcset="" />
+                  </div>
+                  <div class="rev-person col-l-9 col-s-9">
+                    <h4>Muskan Jain</h4>
+                    <h6>Jangjeet Nagar, Agra</h6>
+                  </div>
+                </div>
+                <div class="review-para">
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Inventore necessitatibus quis possimus accusantium? Dolor
+                    hic consequatur doloremque harum voluptatem rem ducimus
+                    voluptates ut obcaecati?
+                  </p>
+                </div>
+              </div>
+            </div>
+            <button class="prev" onclick="prevSlide()">
+              <i class="fa-solid fa-circle-chevron-left"></i>
+            </button>
+            <button class="next" onclick="nextSlide()">
+              <i class="fa-solid fa-circle-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
     </main>
-    <footer>
-        <div class="upper_footer flex_wrap mx-auto pd">
-            <div class="get-in-touch col-l-4 col-m-4 col-s-12">
-                <h4>In need of support?<br>Get in touch!</h4>
-                <div class="mediums">
-                    <div class="medium">
-                        <i class="fa-regular fa-clock"></i>
-                        <p>Tues. - Sun.: 09.30am - 6.30pm</p>
-                    </div>
-                    <div class="medium">
-                        <i class="fa-solid fa-mobile-screen-button"></i>
-                        <p>Phone: <a href="#" onclick="confirmCall('+91 724 860 5408')">+91 724 860 5408</a></p>
-                    </div>
-                    <div class="medium">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        <p>WhatsApp: <a href="https://wa.me/+91 724 860 5408">Chat on WhatsApp</a></p>
-                    </div>
-                    <div class="medium">
-                        <i class="fa-solid fa-location-crosshairs"></i>
-                        <p>Location: <a href="https://www.google.com/maps/place/AcculizeinTech+-+Ethical+Hacking+Institute+In+Agra+%2F+Digital+Marketing+%2F+Graphics+Designing/@27.2101232,77.970234,17z/data=!3m1!4b1!4m6!3m5!1s0x3974775995746b5d:0x12a7f28958f443f!8m2!3d27.2101232!4d77.9728089!16s%2Fg%2F11kjf90k10?entry=ttu">Show on Map</a></p>
-                    </div>
-                </div>
+    <footer id="footer">
+      <div class="upper_footer flex_wrap mx-auto pd">
+        <div class="get-in-touch col-l-4 col-m-4 col-s-12">
+          <h4>In need of support?<br />Get in touch!</h4>
+          <div class="mediums">
+            <div class="medium">
+              <i class="fa-regular fa-clock"></i>
+              <p>Tues. - Sun.: 09.30am - 6.30pm</p>
             </div>
-            <div class="mail col-l-8 col-m-8 col-s-12">
-                <h4>Any Question?</h4>
-                <form action="send-email.php" method="post">
-                    <div class="display_flex mail_header">
-                        <div class="feild">
-                            <label for="name">Your Name:</label><br>
-                            <input type="text" id="name" name="name" autocomplete="name" required>
-                        </div>
-                        <div class="feild">
-                            <label for="email">Your Email:</label><br>
-                            <input type="email" id="email" name="email" autocomplete="email" required>
-                        </div>
-                    </div>
-                    <label for="subject">Subject</label><br>
-                    <input type="text" name="subject" id="subject" autocomplete="subject" required><br>
-                    <label for="message">Message:</label><br>
-                    <textarea id="message" name="message" rows="4" autocomplete="message" required></textarea><br>
-                    <input type="submit" value="Submit">
-                </form>
+            <div class="medium">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+              <p>
+                Phone:
+                <a href="#" onclick="confirmCall('+91 724 860 5408')"
+                  >+91 724 860 5408</a
+                >
+              </p>
             </div>
+            <div class="medium">
+              <i class="fa-brands fa-whatsapp"></i>
+              <p>
+                WhatsApp:
+                <a href="https://wa.me/+91 724 860 5408">Chat on WhatsApp</a>
+              </p>
+            </div>
+            <div class="medium">
+              <i class="fa-solid fa-location-crosshairs"></i>
+              <p>
+                Location:
+                <a
+                  href="https://www.google.com/maps/place/AcculizeinTech+-+Ethical+Hacking+Institute+In+Agra+%2F+Digital+Marketing+%2F+Graphics+Designing/@27.2101232,77.970234,17z/data=!3m1!4b1!4m6!3m5!1s0x3974775995746b5d:0x12a7f28958f443f!8m2!3d27.2101232!4d77.9728089!16s%2Fg%2F11kjf90k10?entry=ttu"
+                  >Show on Map</a
+                >
+              </p>
+            </div>
+          </div>
         </div>
+        <div class="mail col-l-8 col-m-8 col-s-12">
+          <h4>Any Question?</h4>
+          <form action="send-email.php" method="post">
+            <div class="display_flex mail_header">
+              <div class="feild">
+                <label for="name">Your Name:</label><br />
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+              <div class="feild">
+                <label for="email">Your Email:</label><br />
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+            </div>
+            <label for="subject">Subject</label><br />
+            <input
+              type="text"
+              name="subject"
+              id="subject"
+              autocomplete="subject"
+              required
+            /><br />
+            <label for="message">Message:</label><br />
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              autocomplete="message"
+              required
+            ></textarea
+            ><br />
+            <input type="submit" value="Submit" />
+          </form>
+        </div>
+      </div>
     </footer>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />   
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
     <script src="home.js"></script>
-</body>
+  </body>
 </html>

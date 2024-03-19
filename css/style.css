@@ -96,6 +96,14 @@ ul li a{
 .nav_content .logo{
     margin-left: 2%;
 }
+.nav_content .pages ul li a button{
+    background-color: var(--button);
+    color: white;
+    padding: 4% 3%;
+    font-size: 55%;
+    width: 107%;
+}
+
 .nav_content .pages li a,.pages li span,.pages li{
     font-family: 'Robot Slab';
     font-size: 100%;
@@ -110,11 +118,7 @@ ul li a{
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.25);
 }
 .nav_content .pages li a:hover,.pages li span:hover,.pages li:hover{
-    background: linear-gradient(to right,var(--secondary),var(--primary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; 
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #bbb;
 }
 
 
@@ -661,7 +665,7 @@ footer{
         font-size:68%;
     }
     .row .border .dotted .mb-3{
-        font-size: 145%;
+        font-size: 133%;
     }
     iframe{
         width: 302.7px;
@@ -744,7 +748,8 @@ footer{
         height: 8vh;
     }
     .pages{
-        width: 130%;
+        width: 150%;
+        margin-right: 10%;
     }
     .nav_content .pages li a, .pages li span, .pages li {
         font-size: 85%;
@@ -936,7 +941,7 @@ footer{
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     .pages{
-        width: 150%;
+        width: 227%;
     }
     .front h2{
         padding-top: 10%;

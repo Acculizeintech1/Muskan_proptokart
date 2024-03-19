@@ -1,37 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Property Listings</title>
     <link rel="stylesheet" href="css\property.css" />
-    <style>
-        #loading {
-            display: none;
-            text-align: center;
-            margin-top: 20px; /* Adjust as needed */
-        }
-    </style>
     <script>
         function showMedia(userId) {
+            // Send an AJAX request to fetch images and videos for the given user ID
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4) {
-                    if (xhr.status == 200) {
-                        document.getElementById("mediaContainer").innerHTML = xhr.responseText;
-                        document.getElementById("loading").style.display = "none";
-                    } else {
-                        document.getElementById("mediaContainer").innerHTML = "Error loading media.";
-                        document.getElementById("loading").style.display = "none";
-                    }
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Replace the content of a div with the response (images and videos)
+                    document.getElementById("mediaContainer").innerHTML = xhr.responseText;
                 }
             };
-            xhr.open("GET", "fetch_media.php?userId=" + userId, true);
+            xhr.open("GET", "php\fetch_media.php?userId=" + userId, true);
             xhr.send();
-            document.getElementById("loading").style.display = "block";
         }
     </script>
 </head>
+
 <body>
     <header>
         <?php include "header.html" ?>
@@ -50,7 +40,6 @@
             </thead>
             <tbody>
                 <?php
-                // Your PHP code to fetch property listings
                 $servername = "localhost";
                 $username = "root";
                 $password = "";
@@ -82,7 +71,6 @@
                 ?>
             </tbody>
         </table>
-        <div id="loading">Loading...</div>
         <div id="mediaContainer"></div>
     </main>
 </body>

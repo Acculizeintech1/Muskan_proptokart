@@ -48,7 +48,7 @@ if ($resultImages->num_rows > 0) {
 }
 echo "</div>";
 
-// Display videos
+/// Display videos
 echo "<h2>Videos of the Property</h2>";
 echo "<div style='display: flex; flex-wrap: wrap;''>";
 if ($resultVideos->num_rows > 0) {
@@ -58,23 +58,22 @@ if ($resultVideos->num_rows > 0) {
         $videoType = $row['video_type'];
 
         // Output the video if data is available
-        if (!empty ($videoData)) {
+        if (!empty($videoData)) {
             // Encode the video data as base64
             $base64_video_data = base64_encode($videoData);
 
             // Output the video with proper MIME type and base64-encoded data
-            echo "<video width='320' height='240' controls>";
+            echo "<video width='400' height='400' controls>";
             echo "<source src='data:video/$videoType;base64,$base64_video_data' type='video/$videoType'>";
             echo "Your browser does not support the video tag.";
             echo "</video><br>";
-        } else {
-            echo "No videos found";
         }
     }
 } else {
     echo "No videos found";
 }
 echo "</div>";
+
 
 
 
