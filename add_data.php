@@ -16,46 +16,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssssss", $_POST['Address'], $_POST['owner_name'], $_POST['owner_email'], $_POST['owner_phone'], $_POST['price'], $_POST['description']);
     $stmt->execute();
-    $property_id = $stmt->insert_id;
+    $id = $stmt->insert_id;
     $stmt->close();
 
     foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
-        // Create a new prepared statement object for image insertion
-        $sql = "INSERT INTO {$username}_image (image_data) VALUES (?)";
-        $stmt = $conn->prepare($sql);
-
-        if (!$stmt) {
-            die ("Error in SQL query: " . $conn->error);
-        }
-
         $image_data = file_get_contents($tmp_name);
+        $image_name = $_FILES['images']['name'][$key];
+        $image_type = $_FILES['images']['type'][$key];
+
+        $sql = "INSERT INTO {$username}_image (id, image_name, image_data, image_type) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
         $null = NULL;
-        $stmt->bind_param("b", $null);
-        $stmt->send_long_data(1, $image_data);
+        $stmt->bind_param("isbs", $id, $image_name, $null, $image_type);
+        $stmt->send_long_data(2, $image_data);
         $stmt->execute();
         $stmt->close();
     }
 
     foreach ($_FILES['videos']['tmp_name'] as $key => $tmp_name) {
-        // Create a new prepared statement object for video insertion
-        $sql = "INSERT INTO {$username}_video (video_data) VALUES (?)";
-        $stmt = $conn->prepare($sql);
-
-        if (!$stmt) {
-            die ("Error in SQL query: " . $conn->error);
-        }
-
         $video_data = file_get_contents($tmp_name);
+        $video_name = $_FILES['videos']['name'][$key];
+        $video_type = $_FILES['videos']['type'][$key];
+
+        $sql = "INSERT INTO {$username}_video (id, video_name, video_data, video_type) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
         $null = NULL;
-        $stmt->bind_param("b", $null);
-        $stmt->send_long_data(1, $video_data);
+        $stmt->bind_param("isbs", $id, $video_name, $null, $video_type);
+        $stmt->send_long_data(2, $video_data);
         $stmt->execute();
         $stmt->close();
     }
 
 
     $conn->close();
-    echo "<script>alert('Property Added to $username Successfully'); window.location.href = 'login_form.php';</script>";
+    echo "<script>alert('Data Added Successfully'); window.location.href = 'add_data.php';</script>";
     exit;
 }
 ?>

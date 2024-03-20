@@ -10,11 +10,11 @@ $password = $_POST['password'] ?? '';
 if ($username === $valid_username && $password === $valid_password) {
 
     $_SESSION['authenticated'] = true;
-    header("Location: list.php");
+    header("Location:Admin_access.php");
     exit;
 } else {
     $_SESSION['error'] = "Incorrect username or password";
-    echo "<script>alert('Incorrect username or password'); window.location.href = 'login_form.php';</script>";
+    echo "<script>alert('Incorrect username or password'); window.location.href = 'Admin.php';</script>";
     exit;
 }
 ?>

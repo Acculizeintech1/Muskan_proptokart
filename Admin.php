@@ -4,8 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>logIn Form</title>
+    <title>Admin LogIn</title>
     <style>
+        .form-section {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
         body {
             background-color: #264553;
         }
@@ -17,6 +25,23 @@
             text-align: center;
             justify-content: center;
             /* margin: 0 auto; */
+        }
+
+        .selection-buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .selection-buttons button {
+            padding: 1% 7%;
+            /* margin: 1%; */
+            /* border: none; */
+            background-color: rgb(255 255 255 / 10%);
+            border-radius: 9px;
+            border: 1px solid black;
+            font-family: monospace;
+            font-size: 144%;
         }
 
         .form-container {
@@ -34,6 +59,7 @@
             font-weight: bold;
             margin: 0 0 10% 0;
         }
+
         input {
             padding: 2% 1% 2% 3%;
             background-color: #f0e7e7;
@@ -42,6 +68,7 @@
             border-bottom: 2px solid black;
             border-radius: 10px;
         }
+
         main button {
             color: white;
             background-color: #14b2a2;
@@ -75,8 +102,8 @@
     </header>
     <main>
         <div class="form-container">
-            <h2>Employee Section</h2>
-            <form action="emp_fetch.php" method="post" enctype="multipart/form-data">
+            <h2>Admin Section</h2>
+            <form action="authentication.php" method="post" enctype="multipart/form-data">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" placeholder="UserName"><br><br>
                 <label for="password">Password:</label>
@@ -85,7 +112,6 @@
                 <label for="showPassword">Show Password</label><br><br>
                 <button type="submit">Login</button>
             </form>
-            <h6>Create New Account <a href="employee_signup.php">SignUp</a></h6>
         </div>
     </main>
 
