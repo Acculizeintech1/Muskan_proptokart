@@ -1,17 +1,6 @@
 <?php
 // Database connection parameters
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "office";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die ("Connection failed: " . $conn->connect_error);
-}
+include "connection.php";
 
 // Retrieve user ID from the AJAX request
 $userId = $_GET["userId"];

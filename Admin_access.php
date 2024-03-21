@@ -1,15 +1,4 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "office";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die ("Connection failed: " . $conn->connect_error);
-}
-?>
+<?php include "connection.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,13 +69,16 @@ if ($conn->connect_error) {
         }
 
         .form-container {
-            margin: 4% auto;
+            margin: 2% auto;
             font-family: cursive;
             color: black;
             background-color: white;
             border-radius: 45px;
             padding: 2% 2%;
             width: 90%;
+        }
+        h1{
+            margin: 0px;
         }
 
         h2 {
@@ -186,10 +178,10 @@ if ($conn->connect_error) {
                     </tbody>
                 </table>
                 <button onclick="window.location.href='employee_remove.php'"
-            style="position: fixed; bottom: 50px; right: 20px; background-color: #2fc595; color: white; padding: .5% 1%; border: 4px double black; font-weight: bold; font-family: monospace; font-size: 100%;">Remove
+            style="position: fixed; bottom: 50px; right: 20px; background-color: #2fc595; color: white; padding: .5% 1%; border: 4px double black; font-weight: bold; font-family: monospace; font-size: 100%;width: 9vw;">Remove
             Emp </button>
                 <button onclick="window.location.href='employee_signup.php'"
-            style="position: fixed; bottom: 8px; right: 20px; background-color: #2fc595; color: white; padding: .5% 1%; border: 4px double black; font-weight: bold; font-family: monospace; font-size: 100%;">Add
+            style="position: fixed; bottom: 8px; right: 20px; background-color: #2fc595; color: white; padding: .5% 1%; border: 4px double black; font-weight: bold; font-family: monospace; font-size: 100%;width: 9vw;">Add
             Employee </button>
             </div>
 
@@ -197,7 +189,7 @@ if ($conn->connect_error) {
 
         <div class="form-section admin">
             <div class="form-container">
-                <h1>Property Listings</h1>
+                <h1>Property Listings From User End</h1>
                 <table border="5" style="width:100%">
                     <thead>
                         <tr>
@@ -205,6 +197,7 @@ if ($conn->connect_error) {
                             <th>Name</th>
                             <th>Address of the Property</th>
                             <th>Contact Number</th>
+                            <th>Email</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -216,7 +209,7 @@ if ($conn->connect_error) {
                             die ("Connection failed: " . $conn->connect_error);
                         }
 
-                        $sql = "SELECT id, name, place, price FROM add_property";
+                        $sql = "SELECT id, name, place, phone,email FROM add_property";
                         $result = $conn->query($sql);
 
                         if ($result->num_rows > 0) {
@@ -225,7 +218,8 @@ if ($conn->connect_error) {
                                 echo "<td>" . $row["id"] . "</td>";
                                 echo "<td>" . $row["name"] . "</td>";
                                 echo "<td>" . $row["place"] . "</td>";
-                                echo "<td>" . $row["price"] . "</td>";
+                                echo "<td>" . $row["phone"] . "</td>";
+                                echo "<td>" . $row["email"] . "</td>";
                                 echo "<td><button onclick='showMedia(" . $row["id"] . ")'>Show Media</button></td>";
                                 echo "</tr>";
                             }

@@ -1,20 +1,12 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "office";
+    include "connection.php";
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conn->connect_error) {
-        die ("Connection failed: " . $conn->connect_error);
-    }
     $username = $_COOKIE['username'];
     $sql = "INSERT INTO $username (address, owner_name, owner_email, owner_phone, price, description) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssss", $_POST['Address'], $_POST['owner_name'], $_POST['owner_email'], $_POST['owner_phone'], $_POST['price'], $_POST['description']);
+    $stmt->bind_param("ssssss", $_POST['Address'], $_POST['name'], $_POST['email'], $_POST['phone'], $_POST['price'], $_POST['description']);
     $stmt->execute();
     $id = $stmt->insert_id;
     $stmt->close();
@@ -88,22 +80,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     <div class="media-container">
                         <div class="size col-l-6 col-m-6 col-s-12">
-                            <label for="owner_name">Owner Name:</label><br>
-                            <input type="text" id="owner_name" name="owner_name" autocomplete="owner_name"
+                            <label for="name">Owner Name:</label><br>
+                            <input type="text" id="name" name="name" autocomplete="name"
                                 required><br><br>
                         </div>
 
                         <div class="size col-l-6 col-m-6 col-s-12">
-                            <label for="owner_email">Owner Email:</label><br>
-                            <input type="email" id="owner_email" name="owner_email" autocomplete="owner_email"
+                            <label for="email">Owner Email:</label><br>
+                            <input type="email" id="email" name="email" autocomplete="email"
                                 required><br><br>
                         </div>
                     </div>
 
                     <div class="media-container">
                         <div class="size col-l-6 col-m-6 col-s-12">
-                            <label for="owner_phone">Owner phone:</label><br>
-                            <input type="tel" id="owner_phone" name="owner_phone" autocomplete="owner_phone"
+                            <label for="phone">Owner phone:</label><br>
+                            <input type="tel" id="phone" name="phone" autocomplete="phone"
                                 required><br><br>
                         </div>
 

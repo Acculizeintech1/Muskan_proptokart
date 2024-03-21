@@ -1,18 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "office";
-
-    // Establish database connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die ("Connection failed: " . $conn->connect_error);
-    }
+    include "connection.php";
 
     // Retrieve user input and sanitize
     $username = $conn->real_escape_string($_POST['username']);
@@ -34,13 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             if ($conn->query($sql_create_video_table) === TRUE) {
                 // Delete tables
-                $sql_delete_tables = "DROP TABLE if exists $username, {$username}_image, {$username}_video";
-                if ($conn->query($sql_delete_tables) === TRUE) {
+                $sql_delete_tables = "DROP TABLE if exists {$username}_image, {$username}_video,{$username}";
+                if ($conn->query( $sql_delete_tables) === TRUE) {
                     // Delete user row from employees table
-                    $sql_delete_user = "DELETE FROM employee WHERE username = $username";
-                    $stmt_delete_user = $conn->prepare($sql_delete_user);
-                    $stmt_delete_user->bind_param("s", $username);
-                    if ($stmt_delete_user->execute()) {
+                    $sql_delete_user = "DELETE FROM employee WHERE UserName = {$username}";
+                    if ($conn->query( $sql_delete_user) === TRUE) {
                         // Redirect to login form after successful account deletion
                         echo "<script>alert('Account Deleted Successfully with UserName: $username'); window.location.href = 'employee.php';</script>";
                     } else {

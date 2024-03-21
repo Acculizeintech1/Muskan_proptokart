@@ -1,21 +1,61 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "office";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-
-    if ($conn->connect_error) {
-        die ("Connection failed: " . $conn->connect_error);
+    include "connection.php" ;
+    
+    $sql_add_property = "CREATE TABLE IF NOT EXISTS add_property (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        place VARCHAR(255) NOT NULL,
+        phone VARCHAR(20) NOT NULL,
+        email VARCHAR(255) NOT NULL
+    )";
+    
+    // Execute the query to create the add_property table
+    if ($conn->query($sql_add_property) === TRUE) {
+        echo "Table add_property created successfully.<br>";
+    } else {
+        echo "Error creating table add_property: " . $conn->error . "<br>";
+    }
+    
+    // SQL query to create the property_images table
+    $sql_property_images = "CREATE TABLE IF NOT EXISTS property_images (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        property_id INT,
+        image_name VARCHAR(255) NOT NULL,
+        image_data LONGBLOB,
+        image_type VARCHAR(255),
+        FOREIGN KEY (property_id) REFERENCES add_property(id) ON DELETE CASCADE
+    )";
+    
+    // Execute the query to create the property_images table
+    if ($conn->query($sql_property_images) === TRUE) {
+        echo "Table property_images created successfully.<br>";
+    } else {
+        echo "Error creating table property_images: " . $conn->error . "<br>";
+    }
+    
+    // SQL query to create the property_videos table
+    $sql_property_videos = "CREATE TABLE IF NOT EXISTS property_videos (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        property_id INT,
+        video_name VARCHAR(255) NOT NULL,
+        video_data LONGBLOB,
+        video_type VARCHAR(255),
+        FOREIGN KEY (property_id) REFERENCES add_property(id) ON DELETE CASCADE
+    )";
+    
+    // Execute the query to create the property_videos table
+    if ($conn->query($sql_property_videos) === TRUE) {
+        echo "Table property_videos created successfully.<br>";
+    } else {
+        echo "Error creating table property_videos: " . $conn->error . "<br>";
     }
 
-    $sql = "INSERT INTO add_property (name, place, price) VALUES (?, ?, ?)";
+    
+    $sql = "INSERT INTO add_property (name, place, phone,email) VALUES (?, ?, ? ,?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $_POST['name'], $_POST['place'], $_POST['price']);
+    $stmt->bind_param("ssss", $_POST['name'], $_POST['Address'], $_POST['phone'],$_POST['email']);
     $stmt->execute();
     $property_id = $stmt->insert_id;
     $stmt->close();
@@ -82,11 +122,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <label for="name">Name:</label><br>
                     <input type="text" id="name" name="name" autocomplete="name" required><br><br>
 
-                    <label for="place">Address of the property to sell/ Rent:</label><br>
-                    <input type="text" id="place" name="place" autocomplete="place" required><br><br>
+                    <label for="Address">Address of the property to sell/ Rent:</label><br>
+                    <input type="text" id="Address" name="Address" autocomplete="Address" required><br><br>
 
-                    <label for="price">Contact Number:</label><br>
-                    <input type="text" id="price" name="price" autocomplete="price" required><br><br>
+                    <label for="phone">Contact Number:</label><br>
+                    <input type="tel" id="phone" name="phone" autocomplete="phone" required><br><br>
+
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email" autocomplete="email" required><br><br>
 
                     <div class="media-container">
                         <div class="size col-l-6 col-m-6 col-s-12">

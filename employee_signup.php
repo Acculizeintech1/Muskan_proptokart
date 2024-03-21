@@ -1,18 +1,7 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "office";
-
-    // Establish database connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die ("Connection failed: " . $conn->connect_error);
-    }
+    include "connection.php";
 
     // Retrieve user input and sanitize
     $username = $conn->real_escape_string($_POST['username']);
@@ -42,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             image_name VARCHAR(255),
             image_data LONGBLOB,
             image_type VARCHAR(100),
-            FOREIGN KEY (id) REFERENCES $employee_table_name(id)
+            FOREIGN KEY (id) REFERENCES $employee_table_name(id) ON DELETE CASCADE
         )";
 
         if ($conn->query($sql_create_image_table) === TRUE) {
@@ -53,11 +42,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 video_name VARCHAR(255),
                 video_data LONGBLOB,
                 video_type VARCHAR(100),
-                FOREIGN KEY (id) REFERENCES $employee_table_name(id)
+                FOREIGN KEY (id) REFERENCES $employee_table_name(id) ON DELETE CASCADE
             )";
 
             if ($conn->query($sql_create_video_table) === TRUE) {
                 // Insert data into the employee table
+                $sql_create_employee_table = "CREATE TABLE IF NOT EXISTS Employee (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    Username VARCHAR(255) NOT NULL,
+                    email VARCHAR(255) NOT NULL,
+                    phone VARCHAR(20) NOT NULL,
+                    password VARCHAR(255) NOT NULL
+                )";
+                
+                // Execute the query to create the add_property table
+                if ($conn->query($sql_create_employee_table) === TRUE) {
+                    echo "Table Employee created successfully.<br>";
+                } else {
+                    echo "Error creating table Employee: " . $conn->error . "<br>";
+                }
+               
+                
                 $sql_employee = "INSERT INTO employee (Username, email, phone, password) VALUES (?, ?, ?, ?)";
                 $stmt_employee = $conn->prepare($sql_employee);
                 $stmt_employee->bind_param("ssss", $username, $email, $phone, $password);

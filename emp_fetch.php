@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Property Listings</title>
+    <title>Data Collected by Employee</title>
     <link rel="stylesheet" href="css\property.css" />
     <style>
          #loading {
@@ -78,6 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin: 2%;
             font-family: emoji;
         }
+        
     </style>
 </head>
 
@@ -86,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php include "header.html" ?>
     </header>
     <main>
-        <h1>Property Listings</h1>
+        <h1 style="margin:0 auto 1% auto">Data Collected by Employee</h1>
         <table border="5">
             <thead>
                 <tr>
@@ -100,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody style="text-align:center;">
                 <!-- This part will be filled by PHP code -->
                 <?php
                 if ($data_result->num_rows > 0) {
@@ -124,8 +125,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </table>
         <div id="loading">Loading...</div>
                 <div id="mediaContainer"></div>
-        <button onclick="window.location.href='add_data.php'"
-            style="position: fixed; bottom: 20px; right: 20px; background-color: #2fc595; color: white; padding: .5% 1%; border: 4px double black; font-weight: bold; font-family: monospace; font-size: 168%;">Add
+        <button onclick="window.location.href='modify_data.php'"
+            style="position: fixed; bottom: 20px; right: 20px; background-color: #2fc595; color: white; padding: .5% 1%; border: 4px double black; font-weight: bold; font-family: monospace; font-size: 168%;">Modify
             Data</button>
     </main>
     <script>
