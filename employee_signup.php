@@ -3,88 +3,103 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     include "connection.php";
 
+    $sql_create_employee_table = "CREATE TABLE IF NOT EXISTS Employee (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        Username VARCHAR(255) NOT NULL,
+        email VARCHAR(255) NOT NULL,
+        phone VARCHAR(20) NOT NULL,
+        password VARCHAR(255) NOT NULL
+    )";
+
+    // Execute the query to create the add_property table
+    if ($conn->query($sql_create_employee_table) === TRUE) {
+        echo "Table Employee created successfully.<br>";
+    } else {
+        echo "Error creating table Employee: " . $conn->error . "<br>";
+    }
+
     // Retrieve user input and sanitize
+    $name = $conn->real_escape_string($_POST['name']);
     $username = $conn->real_escape_string($_POST['username']);
     $email = $conn->real_escape_string($_POST['email']);
     $phone = $conn->real_escape_string($_POST['phone']);
     $password = $conn->real_escape_string($_POST['password']);
 
     // Create a new table for the employee
+    // $employee_table_name = $username; // Use employee username as table name
     $employee_table_name = $username; // Use employee username as table name
+    $backup_identifier = uniqid(); // Generates a unique identifier
 
-    // Create the main table
-    $sql_create_main_table = "CREATE TABLE IF NOT EXISTS $employee_table_name (
-        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        address VARCHAR(100) NOT NULL,
-        owner_name VARCHAR(50),
-        owner_email VARCHAR(50),
-        owner_phone VARCHAR(15),
-        description TEXT,
-        price DECIMAL(10,2)
-    )";
+    $sql_check_employee_entry = "SELECT COUNT(*) as count FROM employee WHERE username = ?";
+    $stmt_check_employee = $conn->prepare($sql_check_employee_entry);
+    $stmt_check_employee->bind_param("s", $username);
+    $stmt_check_employee->execute();
+    $result = $stmt_check_employee->get_result();
+    $row = $result->fetch_assoc();
+    $stmt_check_employee->close();
 
-    if ($conn->query($sql_create_main_table) === TRUE) {
-        // Create the image table with foreign key constraint
-        $sql_create_image_table = "CREATE TABLE IF NOT EXISTS {$employee_table_name}_image (
-            image_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            id INT(6) UNSIGNED,
-            image_name VARCHAR(255),
-            image_data LONGBLOB,
-            image_type VARCHAR(100),
-            FOREIGN KEY (id) REFERENCES $employee_table_name(id) ON DELETE CASCADE
+    if ($row['count'] != 0) {
+        echo "<script>alert('$username Already exist. Try another'); window.location.href = 'employee_signup.php';</script>";
+    } else {
+
+        // Create the main table
+        $sql_create_main_table = "CREATE TABLE IF NOT EXISTS $employee_table_name (
+            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+            address VARCHAR(100) NOT NULL,
+            owner_name VARCHAR(50),
+            owner_email VARCHAR(50),
+            owner_phone VARCHAR(15),
+            description TEXT,
+            price DECIMAL(10,2)
         )";
 
-        if ($conn->query($sql_create_image_table) === TRUE) {
-            // Create the video table with foreign key constraint
-            $sql_create_video_table = "CREATE TABLE IF NOT EXISTS {$employee_table_name}_video (
-                video_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        if ($conn->query($sql_create_main_table) === TRUE) {
+            // Create the image table with foreign key constraint
+            $sql_create_image_table = "CREATE TABLE IF NOT EXISTS {$employee_table_name}_image (
+                image_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 id INT(6) UNSIGNED,
-                video_name VARCHAR(255),
-                video_data LONGBLOB,
-                video_type VARCHAR(100),
+                image_name VARCHAR(255),
+                image_data LONGBLOB,
+                image_type VARCHAR(100),
                 FOREIGN KEY (id) REFERENCES $employee_table_name(id) ON DELETE CASCADE
             )";
 
-            if ($conn->query($sql_create_video_table) === TRUE) {
-                // Insert data into the employee table
-                $sql_create_employee_table = "CREATE TABLE IF NOT EXISTS Employee (
-                    id INT AUTO_INCREMENT PRIMARY KEY,
-                    Username VARCHAR(255) NOT NULL,
-                    email VARCHAR(255) NOT NULL,
-                    phone VARCHAR(20) NOT NULL,
-                    password VARCHAR(255) NOT NULL
+            if ($conn->query($sql_create_image_table) === TRUE) {
+                // Create the video table with foreign key constraint
+                $sql_create_video_table = "CREATE TABLE IF NOT EXISTS {$employee_table_name}_video (
+                    video_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                    id INT(6) UNSIGNED,
+                    video_name VARCHAR(255),
+                    video_data LONGBLOB,
+                    video_type VARCHAR(100),
+                    FOREIGN KEY (id) REFERENCES $employee_table_name(id) ON DELETE CASCADE
                 )";
-                
-                // Execute the query to create the add_property table
-                if ($conn->query($sql_create_employee_table) === TRUE) {
-                    echo "Table Employee created successfully.<br>";
+
+                if ($conn->query($sql_create_video_table) === TRUE) {
+                    // Insert data into the employee table
+
+                    $sql_employee = "INSERT INTO employee (name, Username, email, phone, password) VALUES (?,?, ?, ?, ?)";
+                    $stmt_employee = $conn->prepare($sql_employee);
+                    $stmt_employee->bind_param("sssss", $name, $username, $email, $phone, $password);
+                    if ($stmt_employee->execute()) {
+                        $employee_id = $stmt_employee->insert_id;
+                        $stmt_employee->close();
+                        // Redirect to login form after successful account creation
+                        echo "<script>alert('Account Created Successfully with UserName $username'); window.location.href = 'employee_signup.php';</script>";
+                    }
                 } else {
-                    echo "Error creating table Employee: " . $conn->error . "<br>";
-                }
-               
-                
-                $sql_employee = "INSERT INTO employee (Username, email, phone, password) VALUES (?, ?, ?, ?)";
-                $stmt_employee = $conn->prepare($sql_employee);
-                $stmt_employee->bind_param("ssss", $username, $email, $phone, $password);
-                if ($stmt_employee->execute()) {
-                    $employee_id = $stmt_employee->insert_id;
-                    $stmt_employee->close();
-                    // Redirect to login form after successful account creation
-                    echo "<script>alert('Account Created Successfully with UserName $username'); window.location.href = 'employee_signup.php';</script>";
-                } else {
-                    // Failure alert
+                    // Failure alert for video table creation
+                    echo "<script>alert('Error creating video table. Please try again later.');</script>";
                 }
             } else {
-                // Failure alert for video table creation
-                echo "<script>alert('Error creating video table. Please try again later.');</script>";
+                // Failure alert for image table creation
+                echo "<script>alert('Error creating image table. Please try again later.');</script>";
             }
         } else {
-            // Failure alert for image table creation
-            echo "<script>alert('Error creating image table. Please try again later.');</script>";
+            // Failure alert for main table creation
+            echo "<script>alert('Error creating main table. Please try again later. <br> Make sure your UserName does not contain any Spaces');</script>";
         }
-    } else {
-        // Failure alert for main table creation
-        echo "<script>alert('Error creating main table. Please try again later. <br> Make sure your UserName does not contain any Spaces');</script>";
     }
 
     $conn->close();
@@ -199,6 +214,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="form-container">
             <h2>Create Account</h2>
             <form method="post" enctype="multipart/form-data">
+                <label for="name">Emp Name:</label>
+                <input type="text" id="name" name="name" placeholder="Name" required><br><br>
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" placeholder="UserName" required><br><br>
                 <label for="email">Email Id : </label>
@@ -215,23 +232,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     </main>
 
-    <script>
-        // Function to toggle password visibility
-        function togglePasswordVisibility() {
-            var passwordInput = document.getElementById("password");
-            var showPasswordCheckbox = document.getElementById("showPassword");
-
-            // If checkbox is checked, show password, otherwise hide it
-            if (showPasswordCheckbox.checked) {
-                passwordInput.type = "text";
-            } else {
-                passwordInput.type = "password";
-            }
-        }
-
-        // Attach event listener to the checkbox
-        document.getElementById("showPassword").addEventListener("change", togglePasswordVisibility);
-    </script>
+    <script src="Script.js"></script>
 </body>
 
 </html>

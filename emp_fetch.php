@@ -2,17 +2,7 @@
 // Check if the form has been submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Establish database connection
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "office";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die ("Connection failed: " . $conn->connect_error);
-    }
+    include "connection.php";
 
     // Retrieve username and password from the form
     $username = $_POST['username'];
@@ -54,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $conn->close();
-} 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Data Collected by Employee</title>
     <link rel="stylesheet" href="css\property.css" />
     <style>
-         #loading {
+        #loading {
             display: none;
             text-align: center;
             margin-top: 20px;
@@ -78,7 +68,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin: 2%;
             font-family: emoji;
         }
-        
     </style>
 </head>
 
@@ -115,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         echo "<td>" . $row["price"] . "</td>";
                         echo "<td>" . $row["description"] . "</td>";
                         echo "<td><button onclick='showMedia(" . $row["id"] . ")'>Show Media</button></td>";
-                                echo "</tr>";
+                        echo "</tr>";
                     }
                     echo "</table>";
                 } else {
@@ -124,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </tbody>
         </table>
         <div id="loading">Loading...</div>
-                <div id="mediaContainer"></div>
+        <div id="mediaContainer"></div>
         <button onclick="window.location.href='modify_data.php'"
             style="position: fixed; bottom: 20px; right: 20px; background-color: #2fc595; color: white; padding: .5% 1%; border: 4px double black; font-weight: bold; font-family: monospace; font-size: 168%;">Modify
             Data</button>

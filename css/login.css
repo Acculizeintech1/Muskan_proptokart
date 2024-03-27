@@ -1,0 +1,131 @@
+body {
+  background-color: #264553;
+}
+
+main {
+  font-family: cursive;
+  /* display: flex; */
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  /* margin: 0 auto; */
+}
+
+.form-container {
+  margin: 4% auto;
+  font-family: cursive;
+  color: black;
+  background-color: white;
+  border-radius: 45px;
+  padding: 2% 8%;
+  width: 30%;
+}
+.form-container form input[type="checkbox"] {
+  width: fit-content;
+}
+
+h2 {
+  font-size: 310%;
+  font-weight: bold;
+  margin: 0 0 10% 0;
+}
+
+input {
+  padding: 2% 1% 2% 3%;
+  background-color: #f0e7e7;
+  border: none;
+  font-size: 94%;
+  border-bottom: 2px solid black;
+  border-radius: 10px;
+}
+
+main button {
+  color: white;
+  background-color: #14b2a2;
+  border: 3px double #2de095;
+  border-radius: 10px;
+  padding: 2% 5%;
+  font-weight: bold;
+  font-size: 115%;
+}
+
+main button {
+  background-color: #1c8c81;
+  color: #ffffffd9;
+}
+
+@media only screen and (max-width: 600px) {
+  .form-container {
+    width: 75%;
+  }
+
+  .form-container input {
+    width: 100%;
+  }
+
+  h2 {
+    font-size: 174%;
+    font-weight: bold;
+    margin: 31px 0 10% 0;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .form-container {
+    width: 65%;
+  }
+
+  .form-container input {
+    width: 68%;
+  }
+
+  h2 {
+    font-size: 262%;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .form-container {
+    width: 45%;
+  }
+
+  .form-container input {
+    width: 77%;
+    font-size: 127%;
+    text-align: center;
+    margin-top: 2%;
+  }
+
+  .form-container label {
+    font-size: 175%;
+  }
+
+  h2 {
+    font-size: 233%;
+    margin: 5% auto;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .form-container {
+    width: 30%;
+  }
+
+  .form-container input {
+    width: 60%;
+    font-size: 82%;
+    text-align: center;
+    margin-top: 2%;
+    margin-left: 3%;
+  }
+  .form-container form {
+    margin-top: 4%;
+  }
+  .form-container label {
+    font-size: 120%;
+  }
+
+  h2 {
+    font-size: 233%;
+    margin: 0% auto;
+  }
+}

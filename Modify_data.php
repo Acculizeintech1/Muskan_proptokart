@@ -2,8 +2,8 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     include "connection.php";
-    
-    if (isset ($_POST['submit_del'])) {
+
+    if (isset($_POST['submit_del'])) {
         // Assuming $conn is your database connection object
         $username = $_COOKIE['username'];
         $id = $_POST['delete_id'];
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Close statement
             $stmt->close();
         }
-    } elseif (isset ($_POST['submit_update'])) {
+    } elseif (isset($_POST['submit_update'])) {
 
         // Assuming $conn is your database connection object
         $username = $_COOKIE['username'];
@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->close();
         }
 
-    } elseif (isset ($_POST['submit_add'])) {
+    } elseif (isset($_POST['submit_add'])) {
         $username = $_COOKIE['username'];
         $sql = "INSERT INTO $username (address, owner_name, owner_email, owner_phone, price, description) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
@@ -87,11 +87,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $image_name = $_FILES['images']['name'][$key];
             $image_type = $_FILES['images']['type'][$key];
 
+
+            // Validate image type
+            if (!isValidImageType($image_type)) {
+                echo "Error: Unsupported image format.";
+                echo "<script>alert('Error: Unsupported image format.' .$image_name. '.' .$image_type);</script>";
+                continue;
+            }
+
+            // Add watermark to image
+            try {
+                $image_with_watermark = addWatermark($image_data, $image_type);
+            } catch (Exception $e) {
+                echo "Error adding watermark to image: " . $image_name;
+                continue; // Skip processing this image
+            }
+
+            // Convert GD image resource to string
+            ob_start();
+            imagepng($image_with_watermark); // Assuming PNG format, adjust as needed
+            $image_with_watermark_string = ob_get_clean();
+
+
             $sql = "INSERT INTO {$username}_image (id, image_name, image_data, image_type) VALUES (?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
             $null = NULL;
             $stmt->bind_param("isbs", $id, $image_name, $null, $image_type);
-            $stmt->send_long_data(2, $image_data);
+            $stmt->send_long_data(2, $image_with_watermark_string);
             $stmt->execute();
             $stmt->close();
         }
@@ -116,6 +138,67 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 }
+
+function isValidImageType($image_type)
+{
+    $supported_types = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif', 'image/bmp', 'image/webp', 'image/tiff', 'image/avif']; // Add more supported types if needed
+    return in_array($image_type, $supported_types);
+}
+
+
+function addWatermark($image_data, $image_type)
+{
+    // Attempt to create image from string
+    $image = @imagecreatefromstring($image_data);
+    if (!$image) {
+        // Handle error if image creation fails
+        throw new Exception("Failed to create image from string.");
+    }
+
+    // Load the watermark image
+    $watermark = imagecreatefrompng('Proptokart\proptokart.png');
+    if (!$watermark) {
+        // Handle error if watermark image loading fails
+        throw new Exception("Failed to load watermark image.");
+    }
+
+    // Add watermark to the image
+    $watermark_width = imagesx($watermark);
+    $watermark_height = imagesy($watermark);
+    $image_width = imagesx($image);
+    $image_height = imagesy($image);
+
+    // Calculate size and opacity of watermark based on image dimensions
+    $watermark_target_width = $image_width * 0.2; // 20% of image width
+    $watermark_target_height = ($watermark_target_width / $watermark_width) * $watermark_height;
+    $watermark_target_opacity = 13; // 10% opacity
+
+    // Resize watermark
+    $resized_watermark = imagescale($watermark, $watermark_target_width, $watermark_target_height);
+
+    // Apply transparency to the resized watermark
+    imagealphablending($resized_watermark, true);
+    imagefilter($resized_watermark, IMG_FILTER_COLORIZE, 0, 0, 0, $watermark_target_opacity);
+
+    // Calculate positions for top right corner placement of the watermark
+    $offset_x = $image_width - $watermark_target_width - 10; // Adjust the padding as needed
+    $offset_y = 10; // Adjust the padding as needed
+
+    // Copy the resized watermark onto the image
+    if (!imagecopy($image, $resized_watermark, $offset_x, $offset_y, 0, 0, $watermark_target_width, $watermark_target_height)) {
+        // Handle error if imagecopy fails
+        throw new Exception("Failed to copy watermark onto image.");
+    }
+
+    // Free memory
+    imagedestroy($resized_watermark);
+    imagedestroy($watermark);
+
+    // Return the image with watermark
+    return $image;
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -260,7 +343,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="form-section delete active">
             <div class="form-container">
                 <h6>
-                    <?php if (isset ($_COOKIE['username'])) {
+                    <?php if (isset($_COOKIE['username'])) {
                         $username = $_COOKIE['username'];
                         // echo "HELLO, $username!";
                     } else {
@@ -291,7 +374,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="form-section update">
             <div class="form-container">
                 <h6>
-                    <?php if (isset ($_COOKIE['username'])) {
+                    <?php if (isset($_COOKIE['username'])) {
                         $username = $_COOKIE['username'];
                         // echo "HELLO, $username!";
                     } else {
@@ -336,7 +419,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="form-section add">
             <div class="form-container">
                 <h6>
-                    <?php if (isset ($_COOKIE['username'])) {
+                    <?php if (isset($_COOKIE['username'])) {
                         $username = $_COOKIE['username'];
                         // echo "HELLO, $username!";
                     } else {

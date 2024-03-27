@@ -1,4 +1,61 @@
-<?php include "connection.php" ?>
+<?php
+session_start();
+
+$valid_username = "PROPTOKART";
+$valid_password_hash = password_hash("Proptokart123@", PASSWORD_DEFAULT);
+
+$username = $_POST['username'] ?? '';
+$password = $_POST['password'] ?? '';
+
+// Set the duration of the block in seconds (24 hours)
+$block_duration = 5;
+
+// Check if the block duration has elapsed since the last failed attempt
+if (isset($_SESSION['last_failed_attempt_time']) && time() - $_SESSION['last_failed_attempt_time'] < $block_duration) {
+    $time_remaining = $block_duration - (time() - $_SESSION['last_failed_attempt_time']);
+    $error_message = "Too many login attempts. Please try again later. You can try again after " . gmdate("H:i:s", $time_remaining) . ".";
+    $_SESSION['error'] = $error_message;
+    echo "<script>alert('$error_message'); window.location.href = 'Admin.php';</script>";
+    exit;
+}
+
+// Check if there have been 3 or more failed attempts
+if (isset($_SESSION['login_attempts']) && $_SESSION['login_attempts'] >= 3) {
+    // If there have been 3 or more failed attempts, start timing
+    $_SESSION['last_failed_attempt_time'] = time();
+    $_SESSION['login_attempts'] = 0; // Reset login attempts counter
+}
+
+if (empty($username) || empty($password)) {
+    // Handle empty username or password
+    $_SESSION['error'] = "Username and password are required.";
+    echo "<script>alert('Username and password are required.'); window.location.href = 'Admin.php';</script>";
+    // header("Location: Admin.php");
+    exit;
+}
+
+// Simulate a delay to mitigate timing attacks
+usleep(500000);
+
+if (hash_equals($valid_username, $username) && password_verify($password, $valid_password_hash)) {
+    // Authentication successful
+    $_SESSION['authenticated'] = true;
+    unset($_SESSION['login_attempts']);
+} else {
+    // Authentication failed
+    $_SESSION['error'] = "Incorrect username or password.";
+    echo "<script>alert('Incorrect username or password.'); window.location.href = 'Admin.php';</script>";
+    $_SESSION['last_failed_attempt_time'] = time(); // Update the timestamp of the last failed attempt
+    // Increment login attempts counter
+    $_SESSION['login_attempts'] = isset($_SESSION['login_attempts']) ? $_SESSION['login_attempts'] + 1 : 1;
+    exit;
+}
+?>
+
+
+<?php include "connection.php"; ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +76,14 @@
             /* font-weight: bold; */
             margin: 2%;
             font-family: emoji;
+        }
+
+        .email-link {
+            color: black;
+        }
+
+        .email-link:hover {
+            color: blue;
         }
 
         a {
@@ -77,7 +142,8 @@
             padding: 2% 2%;
             width: 90%;
         }
-        h1{
+
+        h1 {
             margin: 0px;
         }
 
@@ -126,11 +192,38 @@
 
         <div class="form-section user active">
             <div class="form-container">
-                <h2>User Section</h2>
-                <!-- User form fields here -->
-                <label for="user-name">Name:</label>
-                <input type="text" id="user-name">
-                <!-- Add more user-specific fields as needed -->
+                <h1>User's data From SignUp form</h1>
+                <table border="5" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Contact Number</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $sql = "SELECT id, name,phone,email,address FROM user_data";
+                        $result = $conn->query($sql);
+
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<td>" . $row["id"] . "</td>";
+                                echo "<td>" . $row["name"] . "</td>";
+                                echo "<td><a href='tel:" . $row['phone'] . "' class='email-link'>" . $row["phone"] . "</a></td>";
+                                echo "<td><a href='mailto:" . $row['email'] . "' class='email-link'>" . $row["email"] . "</a></td>";
+                                echo "<td>" . $row["address"] . "</td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='5'>No users found</td></tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
             </div>
         </div>
 
@@ -144,23 +237,21 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Contact Number</th>
-                            <th>Password</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $sql = "SELECT id,username,email,phone,password FROM employee";
+                        $sql = "SELECT id,name,username,email,phone,password FROM employee";
                         $result = $conn->query($sql);
 
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr>";
                                 echo "<td>" . $row["id"] . "</td>";
-                                echo "<td>" . $row["username"] . "</td>";
-                                echo "<td>" . $row["email"] . "</td>";
-                                echo "<td>" . $row["phone"] . "</td>";
-                                echo "<td>" . $row["password"] . "</td>";
+                                echo "<td>" . $row["name"] . "</td>";
+                                echo "<td><a href='mailto:" . $row['email'] . "' class='email-link'>" . $row["email"] . "</a></td>";
+                                echo "<td><a href='tel:" . $row['phone'] . "' class='email-link'>" . $row["phone"] . "</a></td>";
                                 echo "<td>
                                 <form action='emp_fetch.php' method='post' enctype='multipart/form-data'>
                                     <input type='hidden' name='username' value='" . $row["username"] . "'>
@@ -171,18 +262,17 @@
                                 echo "</tr>";
                             }
                         } else {
-                            echo "<tr><td colspan='5'>No users found</td></tr>";
+                            echo "<tr><td colspan='7'>No users found</td></tr>";
                         }
-                        $conn->close();
                         ?>
                     </tbody>
                 </table>
                 <button onclick="window.location.href='employee_remove.php'"
-            style="position: fixed; bottom: 50px; right: 20px; background-color: #2fc595; color: white; padding: .5% 1%; border: 4px double black; font-weight: bold; font-family: monospace; font-size: 100%;width: 9vw;">Remove
-            Emp </button>
+                    style="position: fixed; bottom: 50px; right: 20px; background-color: #2fc595; color: white; padding: .5% 1%; border: 4px double black; font-weight: bold; font-family: monospace; font-size: 100%;width: 9vw;">Remove
+                    Emp </button>
                 <button onclick="window.location.href='employee_signup.php'"
-            style="position: fixed; bottom: 8px; right: 20px; background-color: #2fc595; color: white; padding: .5% 1%; border: 4px double black; font-weight: bold; font-family: monospace; font-size: 100%;width: 9vw;">Add
-            Employee </button>
+                    style="position: fixed; bottom: 8px; right: 20px; background-color: #2fc595; color: white; padding: .5% 1%; border: 4px double black; font-weight: bold; font-family: monospace; font-size: 100%;width: 9vw;">Add
+                    Employee </button>
             </div>
 
         </div>
@@ -203,12 +293,6 @@
                     </thead>
                     <tbody>
                         <?php
-                        $conn = new mysqli($servername, $username, $password, $dbname);
-
-                        if ($conn->connect_error) {
-                            die ("Connection failed: " . $conn->connect_error);
-                        }
-
                         $sql = "SELECT id, name, place, phone,email FROM add_property";
                         $result = $conn->query($sql);
 
@@ -218,13 +302,13 @@
                                 echo "<td>" . $row["id"] . "</td>";
                                 echo "<td>" . $row["name"] . "</td>";
                                 echo "<td>" . $row["place"] . "</td>";
-                                echo "<td>" . $row["phone"] . "</td>";
-                                echo "<td>" . $row["email"] . "</td>";
+                                echo "<td><a href='tel:" . $row['phone'] . "' class='email-link'>" . $row["phone"] . "</a></td>";
+                                echo "<td><a href='mailto:" . $row['email'] . "' class='email-link'>" . $row["email"] . "</a></td>";
                                 echo "<td><button onclick='showMedia(" . $row["id"] . ")'>Show Media</button></td>";
                                 echo "</tr>";
                             }
                         } else {
-                            echo "<tr><td colspan='5'>No users found</td></tr>";
+                            echo "<tr><td colspan='6'>No users found</td></tr>";
                         }
                         $conn->close();
                         ?>
@@ -274,22 +358,14 @@
             document.getElementById("loading").style.display = "block";
         }
 
-        // Function to toggle password visibility
-        function togglePasswordVisibility() {
-            var passwordInput = document.getElementById("password");
-            var showPasswordCheckbox = document.getElementById("showPassword");
+        // JavaScript code to automatically logout user when leaving the page
+        window.addEventListener('beforeunload', function (e) {
+            // Perform logout action here, such as redirecting to logout.php
+            // Example: window.location.href = 'logout.php';
+        });
 
-            // If checkbox is checked, show password, otherwise hide it
-            if (showPasswordCheckbox.checked) {
-                passwordInput.type = "text";
-            } else {
-                passwordInput.type = "password";
-            }
-        }
-
-        // Attach event listener to the checkbox
-        document.getElementById("showPassword").addEventListener("change", togglePasswordVisibility);
     </script>
+    <script src="Script.js"></script>
 </body>
 
 </html>

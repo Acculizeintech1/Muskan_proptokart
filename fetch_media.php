@@ -9,7 +9,7 @@ $userId = $_GET["userId"];
 $sqlImages = "SELECT image_data, image_type FROM property_images WHERE property_id = ?";
 $stmtImages = $conn->prepare($sqlImages);
 if (!$stmtImages) {
-    die ("SQL Error: " . $conn->error);
+    die("SQL Error: " . $conn->error);
 }
 $stmtImages->bind_param("i", $userId);
 $stmtImages->execute();
@@ -18,7 +18,7 @@ $resultImages = $stmtImages->get_result();
 $sqlVideos = "SELECT video_data, video_type FROM property_videos WHERE property_id = ?";
 $stmtVideos = $conn->prepare($sqlVideos);
 if (!$stmtVideos) {
-    die ("SQL Error: " . $conn->error);
+    die("SQL Error: " . $conn->error);
 }
 $stmtVideos->bind_param("i", $userId);
 $stmtVideos->execute();
@@ -47,7 +47,7 @@ if ($resultVideos->num_rows > 0) {
         $videoType = $row['video_type'];
 
         // Output the video if data is available
-        if (!empty ($videoData)) {
+        if (!empty($videoData)) {
             // Encode the video data as base64
             $base64_video_data = base64_encode($videoData);
 

@@ -50,7 +50,7 @@ main{
 .lower .left{
     /* width: 40%; */
     overflow: hidden;
-    position: relative;
+    /* position: static; */
     border-radius: 10%;
     padding-left: 5%;
 }
